@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>项目需求市场</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/need/needMarket.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-page.js"></script>
+<script type="text/javascript" src="/js/category.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/need/css/style.css">
+<link rel="stylesheet" type="text/css" href="/pc/sever/css/style.css">
+
+<style type="text/css">
+.sv_menuBox .menuItem .typeName{ width:90px;}
+</style>
+</head>
+
+<body style="background:#f5f5f5;">
+<div class="first"></div>
+<section>
+	<div class="container">
+    	<div class="sv_top">
+        	<ul>
+            	<li class="sv_top_list" onclick="_pl.showFavorite()">当前位置：</li>
+                <li class="sv_top_list"><a href="/pc">首页</a>></li> 
+                <li class="sv_top_list"><span id="alltypeTop10" style="cursor:pointer;">项目需求市场</span> ></li>
+                <li class="sv_top_list">
+                	<div id="currentTypeName" id="toptab1" style="height:24px;">
+                		<a class="sv_last" id="toptab11" style="cursor: pointer;"><span>全部分类</span></a>
+                	</div>
+                	<div id="showcurrentTypeName" style="display: none;">
+                		<a class="sv_last_a" onclick="_pl.hideChild2cate()">
+                		<span id="currentTypeName">全部分类</span><img src="/pc/sever/image/icon_up.png"></a>
+                	</div>
+                    <div class="menu_show" id="menu_show1" style="display:none;">
+                    	<ul id="menu_l1">
+                        	<!-- <li><a href="">宣传品设计</a></li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li class="sv_top_list" id="sv_top_l2" style="display:none;">
+                	<div id="currentTypeNameL2" id="toptab2" style="height:21px;">
+                		><a class="sv_last" id="toptab22" style="cursor: pointer;"><span>全部分类</span></a>
+                	</div>
+                	<div id="showcurrentTypeNameL2" style="display: none;">
+                		<a class="sv_last_a"  onclick="_pl.hideChild2cate()" href="">
+                		<span id="currentTypeName">全部分类</span><img src="/pc/sever/image/icon_up.png"></a>
+                	</div>
+                    <div class="menu_show" id="menu_show2" style="display:none;left:10px;">
+                    	<ul id="menu_l2">
+                        	<!-- <li><a href="">宣传品设计</a></li> -->
+                        </ul>
+                    </div>
+                </li>
+               <div class="clearfix"></div>
+            </ul>
+               <div class="clearfix"></div>
+            <span class="up_page borderCl" style="cursor:pointer;" onclick="javascript:history.go(-1);">返回上一页</span>
+        </div>
+        <div class="sv_menuBox bg_color2">
+			<div class="menuItem">
+            	<div class="typeName float_l" style="width:90px;">项目需求分类</div>
+                <ul class="menuList" id="TabCategory">
+                	<li class="menu_li"><a href="">全部分类</a></li>
+                    <li class="menu_li"><a href="">资金</a></li>
+                    <li class="menu_li">
+                    	<a href="">咨询服务</a>
+                        <div class="mn_list_show">
+                        	<div class="show_container">
+                            	<div class="menuList_bg"><img src="/pc/sever/image/menuList_bg.png"></div>
+                            	<div class="sc_top">
+                                	<div class="sv_yl float_l">预览：</div>
+                                    <div class="yl_list">
+                                    	<ul>
+                                            <li><a href="">网络营销</a></li>
+                                            <li>
+                                                <a href="">论坛推广</a>
+                                                <a href="">网站推广</a>
+                                                <a href="">博客推广</a>
+                                            </li>
+                                            <li>
+                                                <a href="">推广注册</a>
+                                                <a href="">搜索引擎优化</a>
+                                            </li>
+                                            <div class="clearfix"></div>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="yl_list">
+                                    <ul>
+                                        <li><a href="">网络营销</a></li>
+                                        <li>
+                                            <a href="">论坛推广</a>
+                                            <a href="">网站推广</a>
+                                            <a href="">博客推广</a>
+                                        </li>
+                                        <li>
+                                            <a href="">推广注册</a>
+                                            <a href="">搜索引擎优化</a>
+                                        </li>
+                                        <div class="clearfix"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu_li"><a href="">营销推广</a></li>
+                    <li class="menu_li"><a href="">产品研发</a></li>
+                    <li class="menu_li"><a href="">软件开发</a></li>
+                    <li class="menu_li"><a href="">产品设计</a></li>
+                    <li class="menu_li"><a href="">模具设计</a></li>
+                    <li class="menu_li"><a href="">测试认证</a></li>
+                    <li class="menu_li"><a href="">工厂服务</a></li>
+            		<div class="clearfix"></div>
+                </ul>
+            <div class="clearfix"></div>
+            </div>
+<!-- 
+			<div class="menuItem">
+            	<div class="typeName float_l">项目需求分类</div>
+                <ul class="menuList">
+                	<li id="custT0" onclick="_pl.custTypeClick(this,0)" class="menu_li sertypeClicked">全部类型</li>
+                    <li id="custT2" onclick="_pl.custTypeClick(this,2)" class="menu_li">企业用户</li>
+                    <li id="custT1" onclick="_pl.custTypeClick(this,1)" class="menu_li">个人用户</li>
+          		    <div class="clearfix"></div>
+                </ul>
+            <div class="clearfix"></div>
+            </div>
+ -->
+            <div class="menuItem">
+            	<div class="typeName float_l" style="width:90px;">项目状态</div>                        
+                <ul class="menuList">
+                	<li class="menu_li sertypeClicked"><a class="color_f" onclick="_pl.needStatusClick(this,0)">全部状态</a></li>
+                    <li class="menu_li"><a onclick="_pl.needStatusClick(this,6)">竞标中</a></li>
+                    <li class="menu_li"><a onclick="_pl.needStatusClick(this,61)">选标中</a></li>
+                    <li class="menu_li"><a onclick="_pl.needStatusClick(this,1000)">实施中</a></li>
+                    <li class="menu_li"><a onclick="_pl.needStatusClick(this,1001)">已完成</a></li>
+                    <li class="menu_li"><a onclick="_pl.needStatusClick(this,7)">已过期</a></li>
+          		    <div class="clearfix"></div>
+                </ul>
+            <div class="clearfix"></div>
+            </div>
+            
+        </div><!--sv_menuBox end-->
+        
+        <div class="market_box">
+        <div class="market_item">
+			<ul class="need_lists">
+            	
+            </ul>
+	    </div>
+        </div>
+	    <div id="personalListPager" class="zone_pager">
+        
+    </div>
+</section>
+<div class="last"></div>
+</body>
+<script>
+$("#alltypeTop10").click(function(){
+	window.location.reload();
+});
+</script>
+</html>

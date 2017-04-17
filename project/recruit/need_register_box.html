@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>爱迪狗-需求登记</title>
+
+<link type="text/css" rel="stylesheet" href="/statics/public/css/public.css">
+
+<script type="text/javascript" src="/statics/public/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/statics/public/public-utils.js"></script>
+<script type="text/javascript" src="/statics/public/uuid.js"></script>
+<script type="text/javascript">
+	var uuid;
+	$(document.body).ready(function() {
+		uuid = new UUID().id;
+		$('#uuid').val(uuid);
+		genCode();
+		$('#submitBtn').click(submitRegister);
+		bindCheckFunc();
+	});
+	function genCode() {
+		$('#validateCodeImg').attr(
+				'src',
+				'/bp/drawImage/writeImageExt?createTypeFlag=nl&'
+						+ Math.random() + '&key=' + uuid);
+	}
+	function bindCheckFunc() {
+		var hideFunc = function() {
+			_jM.tooltip.hideTip($(this).attr('id'));
+		}
+		$('#job').focus(hideFunc);
+		$('#phoneNum').focus(hideFunc);
+		$('#name').focus(hideFunc);
+		$('#checkcode').focus(hideFunc);
+	}
+	function checkForm() {
+		var job = $('#job').val();
+		var phoneNum = $('#phoneNum').val();
+		var name = $('#name').val();
+		var checkcode = $('#checkcode').val();
+		var checkEmpty = {
+			'job' : job,
+			'phoneNum' : phoneNum,
+			'name' : name,
+			'checkcode' : checkcode
+		};
+		var flag = true;
+		for ( var i in checkEmpty) {
+			if (checkEmpty[i] == null || checkEmpty[i] == '') {
+				_jM.tooltip.showTip(i, '请您填一下吧！');
+				flag = false;
+			}
+		}
+		return flag;
+	}
+	function submitRegister() {
+		if (!checkForm())
+			return;
+		$.post('/bp/needRegister/register', $('#regForm').serialize(),
+				function(data) {
+					if (data.success) {
+						alert('提交登记成功！');
+						parent._jM.dialog.hiddenModeDialog();
+					} else {
+						if (data.errCode == 'ErrorValidCode') {
+							_jM.tooltip.showTip('checkcode', '验证码错误');
+						} else {
+							alert(data.msg);
+						}
+						genCode();
+					}
+				});
+	}
+</script>
+<style>
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #FAFAFA;
+}
+
+.loginBg {
+	background: url(/pc/project/recruit/image/register_bg.jpg) no-repeat
+		top center #ff751a;
+	padding: 23px 12px 12px;
+	margin-top:15px;
+	width: 96.1%;
+	float:left;
+}
+
+.loginBtn {
+	width: 240px;
+	margin: 0 auto;
+}
+
+.loginBtn a.nowBtn {
+	width: 100%;
+	background: #fff;
+	color: #ff751a;
+	text-align: center;
+	padding: 5px 0;
+	font-size: 18px;
+	display: block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	cursor:pointer;
+}
+
+.loginBtn .bootTel {
+	color: #fff;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+	<form action="#" id="regForm" style="height:475px;">
+		<div
+			style="font-size: 20px; color: #ff6818; text-align: center; padding-bottom: 20px">
+			快速发布需求</div>
+		<div
+			style="font-size: 14px; color: #191919; padding-left: 53px; line-height: 40px;">
+			您要做什么</div>
+		<div style="padding-left: 40px;">
+			<textarea
+				style="resize: none;height: 82px; width: 92%; font-size: 14px; color: #191919; padding: 5px; background: #f5f5f5; border: 1px solid #e5e5e5; font-family: 'Microsoft Yahei';"
+				placeholder="例如：我需要设计一个网上商城APP，我需要做一款智能眼镜，我需要开发公司微信公众号." name="job"
+				id="job" maxlength="350"></textarea>
+		</div>
+		<div
+			style="margin-top: 15px;color: #191919;float: left;font-size: 14px;line-height: 40px;padding-left: 53px;width: 20%;">
+			您的联系方式</div>
+		<div style="margin-top: 15px;float: left;padding-left: 10px;width: 68%;">
+			<input
+				style="height: 35px; width: 92%; font-size: 14px; color: #191919; padding: 5px; background: #f5f5f5; border: 1px solid #e5e5e5;"
+				placeholder="请留下您的联系电话，方便客服专员为您服务." type="text" name="phoneNum"
+				id="phoneNum" maxlength="20">
+		</div>
+		<div
+			style="margin-top: 15px;color: #191919;float: left;font-size: 14px;line-height: 40px;padding-left: 53px;width: 20%;">
+			怎么称呼您？</div>
+		<div style="margin-top: 15px;float: left;padding-left: 10px;width: 68%;">
+			<input
+				style="height: 35px; width: 92%; font-size: 14px; color: #191919; padding: 5px; background: #f5f5f5; border: 1px solid #e5e5e5;"
+				placeholder="例如：黄生." type="text" name="name" id="name"
+				maxlength="10">
+		</div>
+
+		<div style="padding-left: 40px; margin-top: 15px;margin-left: 23.5%;width: 60%;float:left;">
+			<input
+				style="width: 120px; height: 30px; background: #f5f5f5; border: 1px solid #e5e5e5;; font-size: 14px; padding: 5px;"
+				id="checkcode" name="checkcode" placeholder="验证码" type="text">
+			<img style="vertical-align: middle; cursor: pointer;"
+				onclick="genCode();" title="验证码看不清，换一张" id="validateCodeImg">
+			<input type="hidden" name="uuid" id="uuid" />
+		</div>
+
+		<div class="loginBg">
+			<div class="loginBtn">
+				<a class="nowBtn" id="submitBtn">提交</a>
+				<p class="bootTel">客服QQ/专线：4008370880</p>
+			</div>
+		</div>
+		<!-- <div style="width: 320px; height: 50px; background: #ff7519; color: #fff; text-align: center; font-size: 16px; cursor: pointer; border-radius: 5px; line-height: 50px; margin: auto; margin-top: 46px;" id="submitBtn">提&emsp;交</div> -->
+	</form>
+</body>
+</html>

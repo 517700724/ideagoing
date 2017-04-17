@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>完善需求</title>
+
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/js/geography.js"></script>
+<script type="text/javascript" src="/pc/public/js/FileUpload.js"></script>
+<script src="/pc/project/recruit/recruit_details.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/public/css/css.css">
+
+<style>
+.r_moveBox .writeMsg_show ul li{ position:relative;}
+.r_moveBox .writeMsg_show .select_list{ border:1px solid #e5e5e5; border-top:none; width:261px;top:29px; left:78px; position:absolute; z-index:5;}
+.r_moveBox .writeMsg_show .select_list li{ padding:5px 10px; font-size:14px; color:#333;}
+.r_moveBox .writeMsg_show .select_list li:hover{ background:#ff751a; color:#fff;}
+.tj_btn input{ cursor:pointer;width:200px;border-radio:5px; border:none; background:#ff751a; color:#fff; font-size:20px; padding:5px 0; margin:10px auto; display:block; font-weight:bold;
+
+</style>
+</head>
+<body>
+<div class="r_moveBox" style="border: none;position:static ;">
+	<input id="updateOrSave" type="hidden" value="0">
+	<input id="proneedid" type="hidden">
+    	<!-- <div class="moveTop"><a class="rm_btn" href="javascript:;"><img src="/pc/project/recruit/image/r_moveImg.png"></a></div> -->
+        <div class="moveContainer">
+        	<div class="m_h3"><span>项目要求详细描述:</span><a style="display:none;" class="btn rm_btn" href="">使用模板</a></div>
+            <div class="rm_text" style="margin:10px 0 0 0;">
+            	<textarea id="needDesc" class="bg_color2" ></textarea><!-- placeholder="您需要把您想做的项目要求描述的更详细！以便服务商更好的完成项目。" -->
+            </div>
+            <div class="up_btn upDataBox">
+            	<div style="height:20px;width:100%;float:left;">
+	                <!-- <div style="height:20px;width:auto;float:left;" id="upneedShowAttachment"></div> -->
+	                <div style="height:20px;width:auto;float:left;" id="needShowAttachment"></div>
+                </div>
+                <input type="hidden" name="needAttachment" id="needAttachment"/>
+                <div id="upAttament" style="display: none;"></div>
+                <div class="upDataBtn" style="margin-top:10px;"> 
+                    <!-- <a class="up_btn" id="" style="display:none;">图片文档上传</a> -->
+                    <a class="up_fj" style="margin-left:150px;color:#ff6700" id="upfileNeed" onmouseenter="showtxt()" onmouseleave="hidetxt()">上传要求？</a>
+                </div>
+                <div class="up_txt" id="up_txt" style="height:25px"></div>
+            </div>
+            
+            <div class="writeMsg_show">
+                <ul class="item_ul item_ul1">
+                    <li><h3>附加设置：以下信息可关闭不填</h3></li>
+                    <li>
+                        <label>是否公开</label>
+                        <div class="list_chbox">
+                            <div class="list_chbox_r"><img alt="√" id="needIsPublic_yes" pubval="1" src="/pc/public/image/selected.png"><span>公开竞标</span></div>
+                            <div class="list_chbox_r"><img alt="√" id="needIsPublic_no" pubval="0" src="/pc/public/image/unselect.png"><span>不公开竞标</span></div>
+                            <input type="hidden" id="pubval" value="1">
+                        </div>
+                    </li>
+                    <li><label>开发时间</label><div class="w_list_input"><input id="needDevelopmentTimes" class="bg_color2" type="text" placeholder="希望服务商多长时间完成">&nbsp;天</div></li>
+                    <li class="show_li">
+                    	<label>竞标天数</label><div class="w_list_input">
+                        <input onclick="showRecruitDaysList()" readonly="readonly" id="needCompetitiveTimes" class="bg_color2 w_jbday" type="text" placeholder="7" value="7">
+                        </div>
+                        
+                        <ul class="listday" style="display:none;"  id="recruitDaysList" >
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(1)">1</li>
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(3)">3</li>
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(7)">7</li>
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(14)">14</li>
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(21)">21</li>
+                            <li style="margin:0px;" onclick="clickRecruitDaysList(28)">28</li>
+                        </ul>
+                    </li>
+                   
+                   <input type="hidden" name="needCityId" id="needCityId"/>
+                    
+                <li>
+                    <div style="width: 75px; float: left; margin-top: 10px;">区域限制</div>
+                    <div style="height:17px;margin-left:3px;" onclick="showLimitAreaist()" class="w_list_input w_jbday" id="limitArea">全国</div>
+                    <div id="areaList" style="width: 260px; margin: -4px 0px 0px 78px;">
+                        <img src="/statics/public/image/close.gif"
+                             style="float: right; margin: 5px;" onclick="$('#areaList').css('display','none');" />
+                        <ul class="areaHeader">
+                            <li style="border-bottom: 1px solid #fff;line-height: 20px;"
+                                onclick="areaTabChange(2)" id="pBtn">省份</li>
+                            <li style="line-height: 20px;" onclick="areaTabChange(1)" id="cBtn">城市</li>
+                        </ul>
+                        <ul class="areaTable" id="provinceList"></ul>
+                        <ul class="areaTable" id="cityList" style="display: none"></ul>
+                    </div>
+                </li>
+                <li><label>技能要求</label><div class="w_list_input"><input id="needTechniques" class="bg_color2" type="text" placeholder="最多填5个，以逗号隔开"></div></li>
+                </ul>
+                <ul class="item_ul item_ul2">
+                    <li><h3>资质要求：</h3></li>
+                    <li><img alt="√" id="needRequiredEnterpriseBox" needval="1" src="/pc/public/image/selected.png"><span>企业用户（只有认证企业才能竞标）</span></li>
+                    <li><img alt="√" id="needInvoiceBox" needval="1" src="/pc/public/image/selected.png"><span>要求发票（要求服务方提供发票）</span></li>
+                    <li><img alt="√" id="needRequiredCaseBox" needval="1" src="/pc/public/image/selected.png"><span>要求有案例（拥有案例的服务方才能竞标）</span></li>
+                    <li><img alt="√" id="needThirdAuthBox" needval="1" src="/pc/public/image/selected.png"><span>第三方认证（需要由服务方提供第三认证）</span></li>
+                    <input type="hidden" value="0" id="custval">
+                   	<input type="hidden" value="0" id="voiceval">
+                   	<input type="hidden" value="0" id="caseval">
+                   	<input type="hidden" value="0" id="thirdval">
+                </ul>
+            </div><!--writeMsg_show end-->
+            <div class="rs_div rs_sure w_sure text_m">
+            	<img alt="√" xyval="1" id="agreeRules" src="/pc/public/image/selected.png">
+            	<span class="userCk">我已经阅读并接受<a style="color:#ff751a;" href="/article/details/21.html">《发布需求规则》</a></span>
+            	<input type="hidden" value="1" id="xyval">
+            </div>
+        </div>
+        	<div class="tj_btn">
+        		<!-- <div style="border: 0 none; border-radius: 5px;font-size: 22px;padding: 5px 25px;width:100px;margin-left:30%" id="updateneedSubmit" class="btn">完成</div> -->
+        		<form  action='/dfs/dfs/upload.dfs'  id='uploadForm' name='uploadForm' enctype='multipart/form-data' method='post' target='uploadFrame' >
+					<input type="submit" value="提交">
+					<div id="needAddAttachment" style="margin-left:20px;top:319px;position:absolute;z-index:1;width:120px;border-radius:5px;height:30px;line-height:30px;color:#fff;background:#ff6600;text-align:center;cursor:pointer;">
+						图片文档上传
+					</div>
+				</form>
+        	</div>
+    	<iframe name="uploadFrame" id="uploadFrame" style="display:none"></iframe>
+</div>
+</body>
+</html>

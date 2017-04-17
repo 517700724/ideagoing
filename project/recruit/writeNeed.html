@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>type</title>
+<script src="js/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/public.css">
+<link rel="stylesheet" type="text/css" href="style/css.css">
+<style>
+.writeItem h3{ color:#323232; margin:0; font-size:20px;}
+.writeItem{ padding:5px 220px 10px;}
+.wl_text p{ color:#656565; display:inline-block; width:330px; font-size:14px;}
+.write_List .wl_l{ display:inline-block; width:320px; margin-right:45px;}
+.write_List .wl_r{ display:inline-block; width:280px;}
+.wl_text textarea{ width:80%; border:none; height:200px; resize:none;}
+.write_List input{ width:100%;}
+.writeItem .wl_text{ margin:15px 0; padding:5px 0 5px 20px; border:1px solid #e5e5e5;}
+.write_list1 a{ color:#ff751a; font-size:14px;}
+.write_List .wl_l input, .write_List .wl_r input{ margin:25px 0 35px; font-size:16px; padding:7px 5px; border:1px solid #e5e5e5;}
+
+.up_writeMsg{border:1px solid #ff751a; padding:5px 5px 5px 0; background:url(image/sm_san.jpg) no-repeat 103px center; color:#ff7618; width:110px; text-align:center; font-size:14px; cursor:pointer;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
+}
+.writeBox{ margin-top:20px;}
+.wi2_top p{ margin:0;}
+.wi2_top p span{ color:#676767;}
+.wi2_top p span.sapn1{ color:#999;}
+.write_tab table{ width:60%; border-bottom:1px solid #cccccc; border-right:1px solid #cccccc;}
+.write_tab table tr td{ padding:3px 5px; border-top:1px solid #cccccc; border-left:1px solid #cccccc; color:#676767;}
+.write_tab{ margin:20px 0;}
+.w_sure{ text-align:center;}
+.tj_btn input{ width:450px; border:none; background:#ff751a; color:#fff; font-size:20px; padding:5px 0; margin:10px auto; display:block; font-weight:bold;
+-webkit-border-radius:8px;
+-moz-border-radius:8px;
+-ms-border-radius:8px;
+-o-border-radius:8px;
+border-radius:8px;
+}
+.write_List h3 a{ color:#ff751a; font-size:12px; padding:2px 5px; border:1px solid #ff751a;
+margin-left:5px; 
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
+}
+.upDataBox{ position:relative;}
+.goto_xg{ display:none;}
+</style>
+</head>
+
+<body>
+<div class="first"></div>
+<section>
+	<div class="typeBox">
+		<div class="typeTitle"><img src="image/classBg2.jpg"></div>
+        <div class="boxBorder writeBox">
+            <div class="writeItem">
+                <div class="write_List write_list1">
+                    <h3>项目类型</h3>
+                    <div class="wl_text bg_color2">
+                        <p>产品研发>儿童相关>智能手环</p>
+                        <a class="wn_show_md" href="javascript:;">修改</a>
+                    </div>
+                </div>
+                
+                <div class="write_List">
+                 	<div class="wl_l">
+                    	<h3>项目名称</h3>
+                        <input class="bg_color2" type="text" placeholder="例如：我需要开发微信公司公众号" value="" name="">
+                    </div>
+                 	<div class="wl_r">
+                    	<h3>项目预算</h3>
+                        <input class="bg_color2" type="text" placeholder="打算出多少钱来做" value="" name="">
+                    </div>
+                </div>
+                
+                <div class="write_List">
+                    <h3>项目描述 <a href="">使用模板</a></h3>
+                    <div class="wl_text">
+                    	<textarea placeholder="例如：您发布的项目需要什么的功能？对开发这个项目有什么技能要求？"></textarea>
+                    </div>
+                </div>
+                <div class="upDataBox">
+                	<div class="upDataBtn float_l">
+                    	<a class="up_btn" href="">上传附件</a>
+                        <a class="up_fj" href="">附件要求？</a>
+                    </div>
+                    <div class="up_writeMsg float_r">填写详细需求</div>
+                    <div class="clearfix"></div>
+                    <div class="writeMsg_show">
+                    	<ul class="item_ul item_ul1">
+                        	<li><h3>附加设置：以下信息可关闭不填</h3></li>
+                            <li>
+                            	<label>是否公开</label>
+                                <div class="list_chbox">
+                                	<div class="list_chbox_r"><input type="checkbox" checked value=""><span>公开竞标</span></div>
+                                	<div class="list_chbox_r"><input type="checkbox" checked value=""><span>不公开竞标</span></div>
+                                </div>
+                            </li>
+                            <li><label>开发时间</label><div class="w_list_input"><input class="bg_color2" type="text" placeholder="希望服务商多长时间完成"></div></li>
+                            <li><label>竞标天数</label><div class="w_list_input w_jbday">7</div></li>
+                            <li><label>技能要求</label><div class="w_list_input"><input class="bg_color2" type="text" placeholder="最多填5个，以逗号隔开"></div></li>
+                            <li><label>区域限制</label><div class="w_list_input w_jbday">全国</div></li>
+                        </ul>
+                        <ul class="item_ul item_ul2">
+                        	<li><h3>资质要求：</h3></li>
+                        	<li><input type="checkbox" checked value=""><span>企业用户（只有认证企业才能竞标）</span></li>
+                        	<li><input type="checkbox" checked value=""><span>要求发票（要求服务方提供发票）</span></li>
+                        	<li><input type="checkbox" checked value=""><span>要求有案例（拥有案例的服务方才能竞标）</span></li>
+                        	<li><input type="checkbox" checked value=""><span>第三方认证（需要由服务方提供第三认证）</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--writeItem end-->
+        </div>
+        
+        <div class="boxBorder writeBox">
+            <div class="writeItem">
+				<div class="wi2_top">
+                	<p><input type="checkbox" value="" name=""><span class="span1">免费服务：招标、选标、交付、验收</span></p>
+                	<p><input type="checkbox" value="" name=""><span>增值服务：行业专家专项服务、项目资金监管、项目实施流程监管等</span></p>
+                </div>
+                <div class="write_tab">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="33.33%" align="center"></td>
+                            <td width="33.33%" align="center">免费服务</td>
+                            <td width="33.33%" align="center">增值服务</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>招标</label></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>选标</label></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>交付</label></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>验收</label></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>行业专家专项服务</label></td>
+                            <td align="center"><input type="checkbox" value="" ></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>项目资金监管</label></td>
+                            <td align="center"><input type="checkbox" value="" ></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>项目实施流程监管</label></td>
+                            <td align="center"><input type="checkbox" value="" ></td>
+                            <td align="center"><input type="checkbox" value="" checked></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="rs_div rs_sure w_sure"><input type="checkbox"><span class="userCk">同意接受<span>《网站注册服务协议》</span></span></div>
+                <div class="tj_btn"><input type="submit" value="提交"></div>
+                
+            </div><!--writeItem end-->
+        </div>
+    </div>
+</section>
+
+<!--使用模板-->
+<div class="shade_show"></div>
+<div class="w_md_box w_md_box1">
+	<div class="w_md_title bg_color text_m">APP/软件需求信息模板</div>
+    <div class="w_md_main">
+    	<div class="float_l md_menu">
+        	<ul>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li class="li_index">软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            	<li>软件类型（多选）</li>
+            </ul>
+        </div>
+        <div class="w_md_container">
+        	<div class="md_c_list">	
+            	<div class="md_c_link">
+                	<dl>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                        <div class="clearfix"></div>
+                    </dl>
+                </div>
+            	<div class="md_c_link">
+                	<dl>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                        <div class="clearfix"></div>
+                    </dl>
+                </div>
+            	<div class="md_c_link">
+                	<dl>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                    	<dd><input type="checkbox"><span>web</span></dd>
+                        <div class="clearfix"></div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--使用模板 end-->
+
+<!--修改-->
+<div class="goto_xg w_md_box">
+	<div class="class_l float_l">
+        <h3>项目分类</h3>
+        <ul>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li class="li_index"><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+        </ul>
+    </div>
+    
+    <div class="class_r">
+        <div class="class_r_item">
+            <ul>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>其它</h3>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--修改 end-->
+<div class="last"></div>
+
+<script>
+$(function(){
+	$(".up_writeMsg").click(function(){
+		var Msg_show =$(".writeMsg_show");
+		if(Msg_show.is(":hidden")){
+			Msg_show.show();
+		}else{
+			Msg_show.hide();
+		}
+	});
+	
+	$(".wn_show_md").click(function(){
+		$(".shade_show").fadeIn();
+		$(".goto_xg").fadeIn()
+	});
+	
+})
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

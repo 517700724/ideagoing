@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+.softHead{
+	background-color: #ff6700;
+    color: #fff;
+    font-size: 24px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    width: 100%;
+    float:left;
+}
+
+.model_info>div{
+	float:left;
+}
+
+.model_info{
+	border-bottom: 1px solid #ccc;
+	height:50px;
+	float:left;
+	width:100%;
+}
+
+.model_info div{
+	height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.model_th{
+	border-right: 1px solid #ccc;
+    font-family: SimHei;
+    font-size: 14px;
+    width: 29%;
+    color:#666;
+}
+
+.model_td{
+	width:70%;
+	font-size: 14px;
+}
+
+.model_td li {
+    float: left;
+    width: 20%;
+    text-align:left;
+}
+.model_li li {
+    float: left;
+    width: 25%;
+    text-align:left;
+}
+
+.model_text{
+	border-bottom: 1px solid #ccc;
+	height:100px;
+	float:left;
+	width:100%;
+}
+.model_text div{
+	height:100px;
+	float:left;
+}
+.model_text_th{
+	line-height: 100px;
+    text-align: center;
+}
+.model_td > textarea {
+    border: medium none;
+    resize: none;
+    width:100%;
+}
+.model_text_min{
+	border-bottom: 1px solid #ccc;
+	height:60px;
+	float:left;
+	width:100%;
+}
+.model_text_min div{
+	height:60px;
+	float:left;
+}
+.model_text_min{
+	line-height: 60px;
+    text-align: center;
+}
+

@@ -1,0 +1,512 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>服务详情</title>
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/js/geography.js"></script>
+<script type="text/javascript" src="/pc/public/js/FileUpload.js"></script>
+<script src="/pc/project/recruit/recruit_details.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/public/css/css.css">
+<link rel="stylesheet" type="text/css" href="/pc/project/recruit/css/recurit.css">
+
+<style>
+.writeItem h3{ color:#323232; margin:0; font-size:20px;}
+.writeItem{ padding:5px 220px 10px;}
+.wl_text p{ color:#656565; margin:0; padding-left:10px; display:inline-block; width:330px; font-size:14px;}
+.write_List .wl_l{ display:inline-block; width:320px; margin-right:45px;}
+.write_List .wl_r{ display:inline-block; width:280px;}
+.write_List input{ width:100%;}
+.writeItem .wl_text{  border:1px solid #e5e5e5; padding:12px 0; margin-top:5px;}
+.writeItem .wl_text1{ border:none; margin:15px 0;}
+.wl_text1 textarea{ width:98%; padding:1%; border:1px solid #e5e5e5; height:200px; resize:vertical; font-size:14px;line-height:20px;}
+.write_list1 a{ color:#ff751a; font-size:14px;}
+.write_List .wl_l input, .write_List .wl_r input{ margin:25px 0 35px; height:17px; font-size:14px; padding:7px 5px; border:1px solid #e5e5e5;}
+.write_list_m{ margin-top:25px;}
+
+.up_writeMsg{border:1px solid #ff751a; padding:5px 5px 5px 0; background:url("/pc/project/recruit/image/sm_san.jpg") no-repeat 103px center; color:#ff7618; width:110px; text-align:center; font-size:14px; cursor:pointer;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px; 
+}
+.writeBox{ margin:20px auto 0; width:100%;}
+.wi2_top p{ margin:0;}
+.wi2_top p span{ color:#676767;}
+.wi2_top p span.sapn1{ color:#999;}
+.write_tab table{ width:60%; border-bottom:1px solid #cccccc; border-right:1px solid #cccccc;}
+.write_tab table tr td{ padding:3px 5px; border-top:1px solid #cccccc; border-left:1px solid #cccccc; color:#676767;}
+.write_tab{ margin:20px 0;}
+.w_sure{ text-align:center;}
+.tj_btn input{ cursor:pointer;width:450px; border:none; background:#ff751a; color:#fff; font-size:20px; padding:5px 0; margin:10px auto; display:block; font-weight:bold;
+-webkit-border-radius:8px;
+-moz-border-radius:8px;
+-ms-border-radius:8px;
+-o-border-radius:8px;
+border-radius:8px;
+}
+.write_List h3 a{ color:#ff751a; font-size:12px; padding:2px 5px; border:1px solid #ff751a;
+margin-left:5px; 
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px;
+}
+.upDataBox{ position:relative;}
+.goto_xg{ display:none;}
+
+
+</style>
+</head>
+<body>
+<input id="updateOrSave" value="1" type="hidden">
+<div class="first"></div>
+<section>
+	<div class="typeBox">
+		<div class="typeTitle"><img src="/pc/project/recruit/image/classBg2.jpg"></div>
+        <div class="boxBorder writeBox">
+            <div class="writeItem">
+                <div class="write_List write_list1">
+                    <h3>项目类型</h3>
+                    <div class="wl_text bg_color2">
+                        <p id="needCategoryDesc" class="float_l">产品研发>儿童相关>智能手环</p>
+                        <input type="hidden" name="needCategory" id="needCategory"/>
+                        <a class="wn_show_md" href="javascript:;">修改</a>
+                    </div>
+                </div>
+                
+                <div class="write_List write_list_m">
+                 	<div class="wl_l float_l">
+                    	<h3>项目名称<span style="font-size:12px;color:#999">(必填)</span></h3>
+                        <input class="bg_color2" id="needTitle" type="text" placeholder="例如：我需要开发微信公司公众号" value="" name="">
+                    </div>
+                 	<div class="wl_r float_l">
+                    	<h3>项目预算<span style="font-size:12px;color:#999">(必填)</span></h3>
+                    	<input id="needBudget" type="hidden">
+                    	<input id="budgetFlag" type="hidden" value="1">
+                        <input onclick="showRecruitlistBudget()" readonly class="bg_color2 imgcss" id="needBudgetShow" type="text" placeholder="打算出多少钱来做" value="" name="">
+                        <input style="display:none;" onclick="showRecruitlistBudget()" class="bg_color2 imgcss" id="custSetBudgetShow" type="text" placeholder="打算出多少钱来做" value="" name="">
+                        <ul class="listBudget" style="display:none;" id="recruitbudgetList">
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(0,1000,'1千以下')">1千以下</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(1000,3000,'1千至3千')">1千至3千</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(3000,10000,'3千至1万')">3千至1万</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(10000,30000,'1万至3万')">1万至3万</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(30000,100000,'3万至10万')">3万至10万</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(100000,300000,'10万至30万')">10万至30万</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(300000,1000000,'30万至100万')">30万至100万</li>
+							<li style="margin:0px;" onclick="clickRecruitlistBudget(1000000,100000000000,'100万以上')">100万以上</li>
+							<li style="margin:0px;" onclick="custSetBudget()">自定义</li>
+						</ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="write_List">
+                    <h3>项目描述<span style="font-size:12px;color:#999"></span> 
+                    	<a id="modelPanel" style="cursor:pointer;display:none;">使用模板</a>
+                    </h3>
+                    <div class="wl_text1">
+	                    <textarea id="needDesc" style="height: 200px; resize: none;" placeholder="例如：您发布的项目需要什么的功能？对开发这个项目有什么技能要求？(最多3000字)"></textarea>
+                    </div>
+                </div>
+                <div class="up_txt" id="up_txt" style="height:18px"></div>
+                <div style="height:30px;" id="needShowAttachment"></div>
+                <div class="upDataBox">
+					<input type="hidden" name="needAttachment" id="needAttachment"/>
+                	<div class="upDataBtn float_l">
+                    	<a></a>
+                        <a class="up_fj" style="margin-left:150px; id="upfileNeed" onmouseenter="showtxt()" onmouseleave="hidetxt()">上传要求？</a>
+                    </div>
+                    <div class="up_writeMsg float_r">填写详细需求</div>
+                    <div class="clearfix"></div>
+                    <div class="writeMsg_show">
+                    	<ul class="item_ul item_ul1">
+                        	<li><h3>附加设置：以下信息可关闭不填</h3></li>
+                            <li>
+                            	<label>是否公开</label>
+                                <div class="list_chbox">
+                                	<div class="list_chbox_r"><img alt="√" id="needIsPublic_yes" pubval="1" src="/pc/public/image/selected.png"><span>公开竞标</span></div>
+                                	<div class="list_chbox_r"><img alt="√" id="needIsPublic_no" pubval="0" src="/pc/public/image/unselect.png"><span>不公开竞标</span></div>
+                                	<input type="hidden" id="pubval" value="1">
+                                </div>
+                            </li>
+                            <li><label>实施天数</label><div class="w_list_input"><input id="needDevelopmentTimes" class="bg_color2" type="text" placeholder="希望服务商多长时间完成">&nbsp;天</div></li>
+                            <li>
+                            	<label style="width:76px;">竞标天数</label>
+                            	<div class="w_list_input" style="margin-left:-2px;">
+                            		<input onclick="showRecruitDaysList()" readonly id="needCompetitiveTimes" class="bg_color2" type="text" placeholder="7" value="7">
+                            	</div>
+                            	<ul class="listday" style="display:none;" id="recruitDaysList" >
+									<li style="margin:0px;" onclick="clickRecruitDaysList(1)">1天</li>
+									<li style="margin:0px;" onclick="clickRecruitDaysList(3)">3天</li>
+									<li style="margin:0px;" onclick="clickRecruitDaysList(7)">7天</li>
+									<li style="margin:0px;" onclick="clickRecruitDaysList(14)">14天</li>
+									<li style="margin:0px;" onclick="clickRecruitDaysList(21)">21天</li>
+									<li style="margin:0px;" onclick="clickRecruitDaysList(28)">28天</li>
+								</ul>
+                            </li>
+                            <li><label>技能要求</label><div class="w_list_input"><input id="needTechniques" class="bg_color2" type="text" placeholder="最多填5个，以逗号隔开"></div></li>
+                            <input type="hidden" name="needCityId" id="needCityId"/>
+                            <li>
+                            	<div style="width: 78px; float: left; margin-top: 10px;">区域限制</div>
+                            	<div style="height:17px;margin-left:0px; overflow:hidden;" onclick="showLimitAreaist()" class="w_list_input w_jbday" id="limitArea">全国</div>
+                            	<div id="areaList">
+									<img src="/statics/public/image/close.gif"
+										 style="float: right; margin: 5px;" onclick="$('#areaList').css('display','none');" />
+									<ul class="areaHeader">
+										<li style="border-bottom: 1px solid #fff;line-height: 20px;"
+											onclick="areaTabChange(2)" id="pBtn">省份</li>
+										<li style="line-height: 20px;" onclick="areaTabChange(1)" id="cBtn">城市</li>
+									</ul>
+									<ul class="areaTable" id="provinceList"></ul>
+									<ul class="areaTable" id="cityList" style="display: none"></ul>
+								</div>
+                            </li>
+                        </ul>
+                        <ul class="item_ul item_ul2">
+                        	<li><h3>资质要求：</h3></li>
+                        	<li><img alt="√" id="needRequiredEnterpriseBox" needval="0" src="/pc/public/image/unselect.png"><span>企业用户（只有认证企业才能竞标）</span></li>
+                        	<li><img alt="√" id="needInvoiceBox" needval="0" src="/pc/public/image/unselect.png"><span>要求发票（要求服务方提供发票）</span></li>
+                        	<li><img alt="√" id="needRequiredCaseBox" needval="0" src="/pc/public/image/unselect.png"><span>要求有案例（拥有案例的服务方才能竞标）</span></li>
+                        	<li><img alt="√" id="needThirdAuthBox" needval="0" src="/pc/public/image/unselect.png"><span>第三方认证（需要由服务方提供第三认证）</span></li>
+                        	<input type="hidden" value="0" id="custval">
+                        	<input type="hidden" value="0" id="voiceval">
+                        	<input type="hidden" value="0" id="caseval">
+                        	<input type="hidden" value="0" id="thirdval">
+                        </ul>
+                    </div>
+                </div>
+            </div><!--writeItem end-->
+        </div>
+        
+        <div class="boxBorder writeBox">
+            <div class="writeItem">
+				<div class="wi2_top">
+                	<p><img alt="" src="/pc/public/image/selected.png"><span class="span1">免费服务：招标、选标、交付、验收、项目资金监管</span></p>
+                	<p><img alt="√" id="needValueService" needval="0" src="/pc/public/image/unselect.png"><span>增值服务：行业专家专项服务、项目实施流程监管（费用：项目合同款的5%）</span></p>
+                	<input type="hidden" value="0" id="addserciceval">
+                </div>
+                <div class="write_tab">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="33.33%" align="center"></td>
+                            <td width="33.33%" align="center">免费服务</td>
+                            <td width="33.33%" align="center">增值服务</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>招标</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>选标</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>交付</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>验收</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                         <tr>
+                            <td align="left"><label>项目资金监管</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>行业专家专项服务</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/unselect.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                        <tr>
+                            <td align="left"><label>项目实施流程监管</label></td>
+                            <td align="center"><img alt="" src="/pc/public/image/unselect.png"></td>
+                            <td align="center"><img alt="" src="/pc/public/image/selected.png"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="rs_div rs_sure w_sure">
+                	<img alt="√" xyval="1" id="agreeRules" src="/pc/public/image/selected.png">
+                	<input type="hidden" value="1" id="xyval">
+                	<span class="userCk">同意接受<span style="cursor:pointer;"  onclick="javascript:window.open('/article/details/21.html')" >《发布需求规则》</span></span>
+                </div>
+                <div class="tj_btn">
+                	<!-- <input style="cursor:pointer;" type="submit" id="needSubmit" value="提交"> -->
+                	<form  action='/dfs/dfs/upload.dfs'  id='uploadForm' name='uploadForm' enctype='multipart/form-data' method='post' target='uploadFrame' >
+						<input type="submit" value="提交">
+						<div id="needAddAttachment" style="top:1030px;position:absolute;z-index:1;width:120px;border-radius:5px;height:30px;line-height:30px;color:#fff;background:#ff6600;text-align:center;cursor:pointer;">
+							图片文档上传
+						</div>
+					</form>
+                </div>
+                
+            </div><!--writeItem end-->
+        </div>
+    </div>
+    <iframe name="uploadFrame" id="uploadFrame"  style="width:100%;height:50px;display:none;"></iframe>
+    <!-- <iframe name="uploadFrame" id="uploadFrame" style="display:none"></iframe>
+	<form action="/dfs/dfs/upload.dfs" id="uploadForm" enctype="multipart/form-data" method="post" target="uploadFrame" style="display:none">
+		<input type="file" name="file" multiple id="uploadFileSelect" accept="application/msword,application/msexcel,application/vnd.ms-powerpoint,application/pdf,application/x-zip-compressed,image/jpeg,image/png,text/plain"/>
+	</form> -->
+</section>
+
+<!--使用模板-->
+<div id="modelPanelDialog" style="background-color:#fff;display:none;padding-bottom:10px;">
+	<div style="width:100%;float:left;height:20px;background:#ff6700;">
+		<img src="/pc/project/recruit/image/close_blank.png" style="float:right;cursor:pointer" onclick="modelPanelClose()"/>
+	</div>
+	<div class="softHead" >APP/软件信息需求模板</div>
+	<div class="model_info">
+		<div class="model_th">软件类型（多选）</div>
+		<div class="model_td">
+			<ul>
+				<li><input name="softType" type="checkbox" value="web">web</li>
+				<li><input name="softType" type="checkbox" value="wap">wap</li>
+				<li><input name="softType" type="checkbox" value="app">app</li>
+				<li><input name="softType" type="checkbox" value="微信平台">微信平台</li>
+				<li><input name="softType" type="checkbox" value="其他">其他</li>
+			</ul>
+		</div>
+	</div>
+	<div class="model_info">
+		<div class="model_th">运行系统（多选）</div>
+		<div class="model_td">
+			<ul class="model_li">
+				<li><input name="sysType" type="checkbox" value="ios">ios</li>
+				<li><input name="sysType" type="checkbox" value="Android">Android</li>
+				<li><input name="sysType" type="checkbox" value="windows">windows</li>
+				<li><input name="sysType" type="checkbox" value="其他">其他</li>
+			</ul>
+		</div>
+	</div>
+	<div class="model_info">
+		<div class="model_th">运行设备（多选）</div>
+		<div class="model_td">
+			<ul class="model_li">
+				<li><input name="equipmentType" type="checkbox" value="手机">手机</li>
+				<li><input name="equipmentType" type="checkbox" value="平板">平板</li>
+				<li><input name="equipmentType" type="checkbox" value="电脑/笔记本">电脑/笔记本</li>
+				<li><input name="equipmentType" type="checkbox" value="其他">其他</li>
+			</ul>
+		</div>
+	</div>
+	<div class="model_text">
+		<div class="model_th model_text_th">首版功能需求</div>
+		<div class="model_td">
+			<textarea style="height:96px" id="firstNeed"></textarea>
+		</div>
+	</div>
+	<div class="model_text_min">
+		<div class="model_th">后续升级需求</div>
+		<div class="model_td">
+			<textarea style="height:56px" id="followNeed"></textarea>
+		</div>
+	</div>
+	<div class="model_text_min">
+		<div class="model_th">参考案例</div>
+		<div class="model_td">
+			<textarea style="height:56px" id="refCase"></textarea>
+		</div>
+	</div>
+	<div class="model_text_min">
+		<div class="model_th">其他补充</div>
+		<div class="model_td">
+			<textarea style="height:56px" id="otherSupplement"></textarea>
+		</div>
+	</div>
+	<div style="width:100%;float:left;height:50px;">
+		<div onclick="getmodelInfo()"  style="margin-top: 15px;cursor:pointer;width: 120px; color: rgb(255, 255, 255); background: rgb(255, 102, 0) none repeat scroll 0% 0%; font-size: 20px; text-align: center; height: 30px; line-height: 30px; border-radius: 5px; margin-left: 240px;">提交</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<script type="text/javascript">
+function getmodelInfo(){
+	var descHtml="";
+	//softType
+	var softTypeList = document.getElementsByName("softType");
+	var softTypeText="";
+	for(var i=0;i<softTypeList.length;i++){
+		if(softTypeList[i].checked){
+			softTypeText+="、"+softTypeList[i].value;
+		}
+	}
+	softTypeText=softTypeText.substring(1,softTypeText.length);
+	
+	//sysType
+	var sysTypeList = document.getElementsByName("sysType");
+	var sysTypeText="";
+	for(var i=0;i<sysTypeList.length;i++){
+		if(sysTypeList[i].checked){
+			sysTypeText+="、"+sysTypeList[i].value;
+		}
+	}
+	sysTypeText=sysTypeText.substring(1,sysTypeText.length);
+	
+	//equipmentType
+	var equipmentTypeList = document.getElementsByName("equipmentType");
+	var equipmentTypeText="";
+	for(var i=0;i<equipmentTypeList.length;i++){
+		if(equipmentTypeList[i].checked){
+			equipmentTypeText+="、"+equipmentTypeList[i].value;
+		}
+	}
+	equipmentTypeText=equipmentTypeText.substring(1,equipmentTypeText.length);
+	
+	if(_jM.validate.isNotEmpty(softTypeText)){
+		descHtml+="软件类型："+softTypeText+"\n";
+	}
+	
+	if(_jM.validate.isNotEmpty(sysTypeText)){
+		descHtml+="运行系统："+sysTypeText+"\n";
+	}
+	
+	if(_jM.validate.isNotEmpty(equipmentTypeText)){
+		descHtml+="运行设备："+equipmentTypeText+"\n\n";
+	}
+	
+	if(_jM.validate.isNotEmpty($("#firstNeed").val())){
+		descHtml+="首版功能需求："+$("#firstNeed").val()+"\n\n";
+	}
+	
+	if(_jM.validate.isNotEmpty($("#followNeed").val())){
+		descHtml+="后续升级需求："+$("#followNeed").val()+"\n\n";
+	}
+	
+	if(_jM.validate.isNotEmpty($("#refCase").val())){
+		descHtml+="参考案例："+$("#refCase").val()+"\n\n";
+	}
+	
+	if(_jM.validate.isNotEmpty($("#otherSupplement").val())){
+		descHtml+="其他补充："+$("#otherSupplement").val()+"\n\n";
+	}
+	
+	$("#needDesc").val(descHtml);
+	_jM.dialog.hidden({dialogId:'modelPanelDialog'});
+}
+</script>
+
+<!--使用模板 end-->
+
+<!--修改-->
+<div class="goto_xg w_md_box">
+	<iframe style="border:none;overflow:hidden;width:100%;height:700px;" id="categoryFrame" src="/pc/project/recruit/recruit_category.html"></iframe>
+	<!-- <div class="class_l float_l">
+        <h3>项目分类</h3>
+        <ul>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li class="li_index"><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+            <li><div class="tmenu_list">咨询服务</div></li>
+        </ul>
+    </div>
+    
+    <div class="class_r">
+        <div class="class_r_item">
+            <ul>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>工业设计</h3>
+                    <div class="tItemList">
+                        <a href="">外观设计</a>
+                        <a href="">结构设计</a>
+                        <a href="">模具设计</a>
+                        <a href="">工艺设计</a>
+                        <a href="">其它</a>
+                    </div>
+                </li>
+                <li>
+                    <h3>其它</h3>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+</div>
+<!--修改 end-->
+<div class="last"></div>
+
+<script>
+$(function(){
+	$(".up_writeMsg").click(function(){
+		var Msg_show =$(".writeMsg_show");
+		if(Msg_show.is(":hidden")){
+			Msg_show.show();
+		}else{
+			Msg_show.hide();
+		}
+	});
+	
+	$(".wn_show_md").click(function(){
+		_jM.dialog.showModeDialog({
+			id:"categoryDialog",
+			height:600,
+			width:650,
+			url:"/pc/project/recruit/recruit_category.html?dialog=true",
+			callBack:function(obj){
+				$(obj)[0].contentWindow.addCategoryListClass();
+			}
+		});
+	});
+})
+
+window.onload = function(){
+    var isOut = true;
+    var dom = document.getElementById('recruitbudgetList');
+    var other = document.getElementsByTagName('body')[0];
+    other.onclick = function(){
+        if(isOut){
+            dom.style.display = 'none';
+        }
+         isOut = true;
+    }
+    dom.onclick = function(){
+        isOut = false;
+        //this.style.display = 'block';
+    }
+    $("#needBudgetShow").click(function(){
+    	isOut = false;
+       $("#recruitbudgetList").show();
+    });
+    $("#custSetBudgetShow").click(function(){
+    	isOut = false;
+       $("#recruitbudgetList").show();
+    });
+}
+
+//recruitbudgetList
+</script>
+</body>
+</html>

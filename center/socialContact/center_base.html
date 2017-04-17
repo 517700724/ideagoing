@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人资料</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<!--<script type="text/javascript" src="/pc/center/socialContact/center_base.js"></script>-->
+<script type="text/javascript" src="/pc/center/socialContact/center_base_biz.js"></script>
+<script type="text/javascript" src="/pc/center/socialContact/getpass.js"></script>
+<script type="text/javascript" src="/js/geography.js"></script>
+<script type="text/javascript" src="/js/category.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/center/css/style.css">
+<link rel="stylesheet" type="text/css" href="/pc/center/css/css.css">
+
+<link type="text/css" rel="stylesheet" href="/statics/zone/baseinfo/css/zone_base.css">
+<link type="text/css" rel="stylesheet" href="/pc/center/css/rpassword.css">
+
+<style>
+.showStep{ padding-top:50px;}
+</style>
+
+</head>
+
+<body>
+    <div class="prj_main_r">
+			
+            <div class="realTop">
+                <div class="ps_heart float_l">
+                	<div class="ps_h_img"></div>
+                    <div class="color_f">修改头像</div>
+                </div>
+                <div class="ps_info float_l">
+                	<ul>
+                    	<li><span>用户昵称： </span> <span title="" id="userName"></span>&nbsp;<span style="font-size:12px;color:#ff6600;" id="remind"></span><span id="showUpname" style="display:none;"><input type="text" id="userNameIpu"><input type="button" id="userNameSub" value="ok"/></span><br></li>
+                    	<li>手机号码：<span id="custPhone"></span></li>
+                    	<li>用户类型：<span style="" id="userType"></span></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="person_bcBox" id="showContactType">
+            	<div class="bc_btn btn float_r" onclick="editButton_click('editContactType','showContactType')">修改</div>
+                <div class="clearfix"></div>
+                <div class="person_msBox">
+                	<ul>
+                    	<li>联系信息</li>
+                        <li>
+                        	<div class="float_l ms_list1">
+                            	<label>手机：</label><span id="custPhone2"></span>
+                            </div>
+                        	<div class="float_l ms_list2">
+                            	<label style="width:65px;">邮箱：</label><span id="custEmail"></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                        	<div class="float_l ms_list1">
+                            	<label>QQ：</label><span id="custQq"></span>
+                            </div>
+                        	<div class="float_l ms_list2">
+                            	<label style="width:65px;">微信：</label><span id="custWeixin"></span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+							<label class="float_l">城市、区域：</label><span id="custGeography"></span>
+                        </li>
+                        <li><div class="float_l">详细地址：</div><span id="custAddress"></span><div class="clearfix"></div></li>
+                    </ul>
+                </div>
+            </div>
+            
+			<div class="person_bcBox" id="editContactType" style="display:none;">
+                <div class="float_r">
+                	<div class="bc_btn btn2 float_l" style="margin-right:5px;" onclick="cancelButton_click('editContactType','showContactType')">取消</div>
+                	<div class="bc_btn btn float_l" id="user_contact_submit">保存</div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="person_msBox">
+                	<ul>
+                    	<li>联系信息</li>
+                        <li>
+                        	<div class="float_l ms_list1">
+                            	<label>手机：</label>
+                                <input type="text" name="custPhone" id="custPhone_input" value="">
+                            </div>
+                        	<div class="float_l ms_list2">
+                            	<label style="width:65px;">邮箱：</label>
+                                <input type="text" name="custEmail" id="custEmail_input" value="">
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                        	<div class="float_l ms_list1">
+                            	<label>QQ：</label>
+                                <input type="text" name="custQq" id="custQq_input"/>
+                            </div>
+                        	<div class="float_l ms_list2">
+                            	<label style="width:65px;">微信：</label>
+                                <input type="text" name="custWeixin" id="custWeixin_input"/>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                        <!--  
+							<label class="float_l">我在哪里：</label>
+                            <div class="ms_province sj_img float_l">省</div>
+                            <div class="ms_city sj_img float_l">市</div>
+                            <div class="clearfix"></div>
+                        -->
+	                        <div class="float_l" style="line-height:30px;">城市、区域：</div>
+							<input id="limitArea" type="text" name="custGeography" readonly="readonly"/>
+							<input type="hidden" name="custCityId" id="custCityId_input"/>
+							<input type="hidden" name="custProvinceCode" id="custProvinceCode_input"/>
+							
+							<div class="select_btn" id="limitSelectBtn" onclick="showAreaist()" style="">
+								<img src="/statics/public/image/arrow_down2.png"/>
+							</div>
+							<div id="areaList">
+								<img src="/statics/public/image/close.gif"
+									 style="float: right; margin: 5px;" onclick="$('#areaList').css('display','none');" />
+								<ul class="areaHeader">
+									<li style="border-bottom: 1px solid #fff;line-height: 20px;"
+										onclick="areaTabChange(2)" id="pBtn">省份</li>
+									<li style="line-height: 20px;" onclick="areaTabChange(1)" id="cBtn">城市</li>
+								</ul>
+								<ul class="areaTable" id="provinceList"></ul>
+								<ul class="areaTable" id="cityList" style="display: none"></ul>
+						    </div>
+						    <div class="clearfix"></div>
+                        </li>
+                        <li>
+                        	<div class="float_l">
+                        		<div class="float_l">详细地址：</div><input type="text" style="width:366px" name="custAddress" id="custAddress_input"/>
+                        	</div>
+                        	<div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            
+			<div class="passwordBox">
+            	<div class="ps_title">修改密码</div>
+      <div style="width:800px;height:838px;border:0px solid;background:#fff; font-size:13px;"><center>
+		<div class="showStep">
+			<ul style="background:#ddd;">
+		        <li class="imgbarli" id="img1" style="border-bottom-left-radius: 1px;border-top-left-radius: 1px;"></li>
+		        <li class="imgbarli" id="img2"></li>
+		        <li class="imgbarli" id="img3"></li>
+		        <li class="imgbarli" id="img4" style="border-bottom-right-radius: 1px;border-top-right-radius: 1px;"></li>
+	        </ul>
+			<ul class="">
+		        <li class="stepbarli">第一步 填写手机号</li>
+		        <li class="stepbarli">第二步 验证手机号</li>
+		        <li class="stepbarli">第三步 输入新密码</li>
+		        <li class="stepbarli">第四步 完成</li>
+	        </ul>
+		</div>
+		<input type="hidden" id="userphone">
+		<div id="step_one">
+			<div class="stepinp">
+				<span>手机号码：</span><input type="text" id="showPhone" style="width:280px;height:30px;margin-left:10px;">
+			</div>
+			<div class="passbtn">
+		        <span id="doNextone" style="border:0px solid;padding:5px 53px;">下一步</span>
+		        <span id="doNextone2" style="border:0px solid;padding:5px 53px;display:none;">下一步</span>
+		    </div>
+	    </div>
+	    <div id="step_two" style="display:none;">
+			<div style="width:560px;" class="stepinp">
+				<span style="padding-left:80px;">校验码：</span><input type="text" id="validateCode" style="width:280px;height:30px;margin-left:10px;">
+				<div style="border:1px solid #ddd;width:100px;float:right;padding:7px;margin-top:13px;cursor: pointer;" id="getCode1">获取校验码</div>
+  				<div style="border:1px solid #ddd;width:100px;float:right;padding:7px;margin-top:13px;cursor: pointer;display:none;" id="getCode2">获取校验码</div>
+				<!--  
+				<lable id="getCode1" style="cursor:pointer;">获取校验码</lable>
+				<lable id="getCode2" style="display:none;cursor:pointer;">获取校验码</lable>
+				-->
+			</div>
+			<div class="passbtn">
+		        <span id="doNexttwo" style="display:none;border:0px solid;padding:5px 53px;" >下一步</span>
+		        <span id="doNexttwo2" style="display:block;border:0px solid;padding:5px 53px;line-height:20px;" >下一步</span>
+		        <span id="doNexttwo3" style="display:none;border:0px solid;padding:5px 53px;" >下一步</span>
+		    </div>
+	    </div>
+	    <div id="step_three" style="display:none;">
+			<div class="stepinp">
+				<span style="padding-left:13px;">新密码：</span><input type="password" id="userPassword" style="width:280px;height:30px;margin-left:10px;">
+			</div>
+			<div style="margin-top:10px;" class="stepinp">
+				<span style="padding-left:0px;">确认密码：</span><input type="password" id="userPasswordConfirm" style="width:280px;height:30px;margin-left:10px;">
+			</div>
+			<div class="passbtn">
+		        <span id="doNextthree" style="border:0px solid;padding:5px 53px;">下一步</span>
+		        <span id="doNextthree2" style="border:0px solid;padding:5px 53px;display:none;">下一步</span>
+		    </div>
+	    </div>
+	    <div id="step_four" style="display:none;">
+  		<div class="showSuccess1">
+		        <span style="font-size:32px;color:#ff6600;" id="doNextone">修改密码成功</span>
+		    </div>
+			<div class="passbtn" style="margin-left:0;">
+		        <span id="doNextone" onclick="javascript:window.location.href='/login/login.html'" style="border:0px solid;padding:5px 38px;">返回登录页</span>
+		    </div>
+	    </div>
+    </center></div>
+            	
+            <!-- 	
+                <div class="ps_lc" style="margin:40px auto 50px;"><img src="/pc/center/image/ps_lc.jpg"></div>
+                <div class="ps_phone">
+                	<div class="float_l">
+                    	<label class="float_l">手机号码：</label>
+                        <input type="" value="" class="phone">
+                        <button class="btn">获取验证码</button>
+                        <div class="clearfix"></div>
+                    </div>
+                	<div class="float_l btn2">下一步</div>
+                    <div class="clearfix"></div>
+                </div>
+             -->   
+                
+            </div>
+
+            
+            
+			            
+        </div><!--prj_main_r end-->
+</body>
+</html>
+
+
+

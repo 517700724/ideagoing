@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<#assign need= readNeed(pubCatalog.refId)>
+<title>${need.needTitle}</title>
+<meta name="keywords" content="${need.needTitle} <#list need.proBaseCategorys?reverse as pbc>${pbc.categoryName} </#list>">
+<meta name="description" content="爱迪狗（ideagoing.com）【${need.custBase.custNickname}】在发布需求：${need.needTitle}。具体要求：<#if need.needDesc?length gt 30>${need.needDesc?substring(0,30)}...<#else>${need.needDesc}</#if>">
+
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/need/need_detail.js"></script>
+<script type="text/javascript" src="/js/category.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/need/css/style.css">
+
+<script>
+var needId= ${need.id?c};
+var needStatus = ${need.needStatus?c};
+var needCustId = ${need.custId?c};
+var releaseCheckTime = _jM.date.string2Date("${need.check2Time1}");
+var releaseCompetitiveTimes = ${need.needCompetitiveTimes};
+var needTitle="${need.needTitle}";
+</script>
+<style>
+.con_nav .li{ width:172px; text-align:center; margin-top:0; line-height:20px; height:60px; font-size:14px; float:left; color:#555;}
+
+/* 留言列表样式  */
+.msg_list{ margin-top:14px; overflow:auto; width:100%;}
+.msg_list li{border-top:1px solid #e8e8e8; overflow:auto; padding:14px 0; width:100%;}
+.msg_list li img{ float:left; height:50px; margin:0 10px; width:50px;}
+.msg_list li .w{ color:#555; float:right; line-height:24px; width:90%; word-wrap:break-word;}
+.msg_list li .author{ color:#aaa;}
+.blueLink{ color:#4671b9; text-decoration:none;}
+.msg_list li .oper{ color:#aaa; float:right; margin-right:10px;}
+.msg_list li .oper a{ color:#4671b9; margin-left:10px; text-decoration:none;}
+#msg_more_button, #msg_more_progress{ display:none;}
+.msg_more{ background:#eee; color:#555; cursor:pointer; height:30px; line-height:30px; text-align:center; width:100%;}
+.message{display:none; float:left;margin-bottom:10px; overflow:hidden;}
+.msg_area{border:1px solid #e8e8e8; color:#555;font-size:14px;height:100px; margin:10px 0 6px; padding:10px;resize:none;width:100%;}
+.msg_label{width:600px; float:left; line-height:32px; color:#ff7519; overflow:hidden;}
+.msg_label span{ float:right; color:#555;}
+.global_btn{background-color:#ff7519; color:#fff;cursor:pointer; font-size:13px; height:30px; line-height:30px; text-align:center; width:110px; float:right;}
+
+</style>
+</head>
+
+<body>
+<!-- <div id="addServiceDialog" style="background-color:#fff;border:1px solid #ddd;display:none;top:89px;">
+	<div class="subBtn" onclick="closeServiceDialog()">取消</div>
+	<div class="subBtn" onclick="updateServiceDialog()">提交</div>
+	<div class="addService" style="float:left;width:100%;">
+		<div>服务意向：</div>
+		<div type="text" id="custCategory_input" onclick="_nd.showCate()" readonly="readonly" class="select_box"></div>
+		<div class="select_btn" onclick="_nd.showCate()">
+			<img src="/statics/public/image/arrow_down2.png"/>
+		</div>
+	</div>
+	<div id="catepanel"  onmouseout="_nd.hidecate()" style="width:100%;margin-left:75px;">
+		<div  class="cate_div" id="cate_div1" style="width:182px;text-align:left;">
+		<ul id="serviceType1">
+			
+		</ul>
+		</div>
+		<div  class="cate_div2" id="cate_div2" style="width:182px;">
+		<ul id="serviceType2">
+		
+		</ul>
+		</div>
+		<div  class="cate_div2" id="cate_div3" style="width:182px;">
+		<ul id="serviceType3">
+		
+		</ul>
+		</div>
+	</div>
+	
+	<input type="hidden" id="selectedId">
+	<input type="hidden" id="currid1">
+	<input type="hidden" id="currid2">
+</div> -->
+<div class="first"></div>
+
+<section>
+<div class="container">
+  <div class="sv_top">
+        <ul>
+            <li class="sv_top_list">当前位置：</li>
+            <li class="sv_top_list"><a href="/pc">首页 </a> >  </li> 
+            <li class="sv_top_list"><a href="/pc/need/needMarket.html">项目需求市场 </a> > </li>
+            <li class="sv_top_list"><a href="#">项目详情 </a></li>
+           <div class="clearfix"></div>
+        </ul>
+           <div class="clearfix"></div>
+        <a class="up_page borderCl" style="cursor:pointer;" onclick="javascript:history.back(-1)">返回上一页</a>
+    </div>
+    
+    <div class="mk_top">
+    	<!--<div class="mk_top_img"><img src="/pc/need/image/lc_bg2.png"></div>-->
+    	<ul class="con_nav">
+        <!--
+        	<li class="lc_after"><p>项目需求发起</p><span>xxx 年 xx 月 xx 日</span></li>
+        	<li class="lc_after"><p>服务商竞标</p><span>xxx 年 xx 月 xx 日</span></li>
+        	<li class="lc_index"><p>雇主选标</p><span>xxx 年 xx 月 xx 日</span></li>
+        	<li><p>项目实施</p></li>
+        	<li><p>验收付款</p></li>
+         -->
+			<#assign status = need.needStatus>
+			<#if status==-2 || status==-1 || status==0 || status==1 || status==2 || status==3 || status==4 || status==5>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>发布需求</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>竞标选标</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>实施验收</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>付款评价</li>
+			<li class="li"><img src="/statics/public/image/step_bg_01.png"/>项目结束</li>
+			<#elseif status==6 || status=61 || status==7>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>发布需求</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>竞标选标</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>实施验收</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>付款评价</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>项目结束</li>
+			<#elseif status==8 || status==81 || status==82 || status==83>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>发布需求</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>竞标选标</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>实施验收</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>付款评价</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>项目结束</li>
+			<#elseif status==84 || status==85 || status==86>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>发布需求</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>竞标选标</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>实施验收</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>付款评价</li>
+			<li class="li"><img src="/pc/need/image/step_bg_01.png"/>项目结束</li>
+			<#elseif status==9 || status==10>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>发布需求</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>竞标选标</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>实施验收</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>付款评价</li>
+			<li class="li"><img src="/pc/need/image/step_bg_02.png"/>项目结束</li>
+			</#if>   
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    
+    <div class="mk_item mk_item1 bg_color2">
+    	<div class="mk_itemTop">
+        	<div class="mk_l float_l">
+            	<h1><p>项目需求ID：${need.needNo}</p>${need.needTitle}</h1>
+                <ul>
+                	<li class="mk_li mk_li0"><img src="/pc/need/image/tag_02.png"><label>项目预算：</label><span class="color_f">
+                <#if need.needBudget??>
+				<#if need.needBudget =='0.00'>
+					待商议
+				<#elseif need.needBudget == '0,1000'>
+					1千以下
+				<#elseif need.needBudget == '1000,3000'>
+					1千至3千
+				<#elseif need.needBudget == '3000,10000'>
+					3千至1万
+				<#elseif need.needBudget == '10000,30000'>
+					1万至3万
+				<#elseif need.needBudget == '30000,100000'>
+					3万至10万
+				<#elseif need.needBudget == '100000,300000'>
+					10万至30万
+				<#elseif need.needBudget == '300000,1000000'>
+					30万至100万
+				<#elseif need.needBudget == '1000000,100000000000'>
+					100万以上
+				<#else>
+					${need.needBudget}
+				</#if>
+			<#else>
+				待商议
+			</#if>
+                    </span></li>
+                	<li class="mk_li mk_li00"><img src="/pc/need/image/tag_04.png"><label>行业类别：</label><span title="<#list need.proBaseCategorys?reverse as pbc>${pbc.categoryName}<#if pbc_has_next>/</#if></#list>" class="color_f">
+                        <#list need.proBaseCategorys?reverse as pbc>
+                            ${pbc.categoryName}<#if pbc_has_next>/</#if>
+                        </#list>
+                        <input type="hidden" id="needCategery" value="${need.needCategory?c}">
+                    </span></li>
+                	<li class="mk_li mk_li1"><img src="/pc/need/image/tag_07.png"><label>技能标签：</label><span class="color_f">
+                    			<#if need.needTechniques!??>
+                                    <#if need.needTechniques?length gt 0>
+                                    ${need.needTechniques}		
+                                    <#else>
+                                    无要求
+                                    </#if>
+                                <#else>
+                                    无要求
+                                </#if>
+                    </span></li>
+                </ul>
+                <ul>
+                	<li class="mk_li mk_li0"><img src="/pc/need/image/tag_05.png"><label>开发周期：</label><span class="color_f">
+                    <#if need.needDevelopmentTimes??><#if need.needDevelopmentTimes == 0>待商议<#else>${need.needDevelopmentTimes}天</#if><#else>待商议</#if>
+                    </span></li>
+                	<li class="mk_li mk_li00"><img src="/pc/need/image/tag_08.png"><label>参加竞标：</label><span class="color_f">${need.needCompeitiveNum}人</span></li>
+                	<li class="mk_li mk_li1"><img src="/pc/need/image/tag_09.png"><label>项目发起人：</label><span class="color_f">${need.custBase.custNickname}</span></li>
+                </ul>
+            </div>
+        	<div class="mk_r float_l">
+            	<div class="mk_collect"  style="height: 42px;">
+                    <div class="d_favorite">
+                        <img id="favoritebtn" src="/pc/need/image/empty_star.png" status="0">&nbsp;<span id="favoriteTitle">收藏</span>
+                    </div>
+                </div>
+               
+                <div id="jingbiaoBtn" class="mk_r_title color_f">立即竞标</div>
+                <p class="mk_time"><i><img src="/pc/need/image/tag_03.png"></i>截止时间：<span class="">
+                	<label id="showCompetitiveReleaseDays"></label>
+                </span></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="mk_item_text">
+        	<h3>项目描述</h3>
+      <!-- <ul>
+            	<li>1.要能上天</li>
+            	<li>2.最好我和我媳妇都能上天</li>
+            	<li>3.这个我要的比较急，八月十五之前就要的</li>
+            	<li>4.详细可以商议</li>
+            </ul>
+       -->
+       		<p>${need.needDesc?replace('\n','</p><p>')}</p>
+        </div>
+        <div class="mk_item_bottom">
+        	<div class="mk_b_l float_l">
+            	<h3>资质要求</h3>
+                <ul class="d_attachment">
+                    ${need.needRequiredEnterprise?string("<li>要求是企业用户</li>","")}
+                    ${need.needAfterSales?string("<li>要求要有售后</li>","")}
+                    ${need.needInvoice?string("<li>要求要有发票</li>","")}
+                    ${need.needThirdAuth?string("<li>要求有第三方认证</li>","")}
+                    ${need.needRequiredCase?string("<li>要求要有成功案例</li>","")}
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+        	<div class="mk_b_r float_l">
+            	<h3>图片文档说明</h3>
+<!--                <div class="downLoad_text"><span>1.需求文件V2.0爱迪狗.jpg </span><a class="mk_downLoad">下载</a></div>-->
+					<div class="downLoad_text">
+			<ul class="d_attachment">
+			<#assign attach = need.needAttachment>
+			<#if attach??>
+				<#if attach?length gt 0>
+					<#list attach?split("|") as attachment>
+					<#if attachment?length gt 0>
+						<#assign index = attachment?index_of("*")>
+						<li>
+							<img style="width:20px;float:left;" 
+							src="<#if attachment?contains('.png*')>
+									${'/pc/need/image/pic.png'}
+								<#elseif attachment?contains('.jpg*')>
+									${'/pc/need/image/pic.png'}
+								<#elseif attachment?contains('.gif*')>
+									${'/pc/need/image/pic.png'}
+								<#elseif attachment?contains('.zip*')>
+									${'/pc/need/image/ys.png'}
+								<#elseif attachment?contains('.rar*')>
+									${'/pc/need/image/ys.png'}
+								<#else>
+									${'/pc/need/image/word.png'}
+								</#if>
+							">
+							<span>${attachment_index+1}.${attachment?substring(0,index)}</span>
+							<a class="mk_downLoad" href="${attachment?substring(index+1)}">下载</a>
+						</li>
+					</#if>
+					</#list>
+				<#else>
+					<li><h3>附件：无</h3></li>
+				</#if>
+			</#if>
+			</ul>
+                    
+                    </div>
+              
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div><!--mk_item1 end-->
+    
+    <div class="mk_item mk_item2 bg_color2 d_text">
+    	<h3>补充需求</h3>
+        			<#assign supplements = need.needSupplements>
+			<#list supplements as sp>
+			<p style="color:#555;font-weight:bold">补充需求${sp_index+1}</p>
+			<p>${sp.supplementDesc?replace("\r","</p><p>")}</p>
+			<ul class="d_attachment">
+			<#assign attach = sp.supplementAttachment>
+			<#if attach??>
+				<#if attach?length gt 0>
+					<li><h3>附件：</h3></li>
+					<#list attach?split("|") as attachment>
+					<#if attachment?length gt 0>
+						<#assign index = attachment?index_of("*")>
+						<li>${attachment_index+1}.${attachment?substring(0,index)}<a href="${attachment?substring(index+1)}">点击下载</a></li>
+					</#if>
+					</#list>
+				<#else>
+					<li><h3>附件：无</h3></li>
+				</#if>
+			</#if>
+			</ul>
+			</#list>
+    </div>
+    
+    <div class="mk_item mk_item3 bg_color2 msg_block">
+    	<div class="textTop">
+	    	<h3>沟通留言<span>沟通留言的信息仅对方可见！</span></h3>
+           	<div class="txtNom">0/140字</div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="textwirte">
+			<textarea class="msg_area" placeholder="请输入留言内容，不能超过140个字符！" id="messageContent" onchange="$('#showMsgLength').html($(this).val().trim().length+'/140字符')" 
+			onkeydown="$('#showMsgLength').html($(this).val().trim().length+'/140字符');"></textarea>
+        </div>
+        <div class="gt_btn">
+        <!--	<a class="btnNo">取消</a>
+        	<a class="btn">发送出去</a>
+        -->
+<!--        <a style="" class="global_btn btnNo" onclick="$('.message').css('display','none');$('#messageTooltip').css('display','block');_jM.tooltip.hideTip('messageSubmit')">取消</a>-->
+		<span class="success_text" style="color:red; display:none; font-size:14px; line-height:1.5;">发送成功</span>
+        <a class="global_btn btn" style="" id="messageSubmit">发送出去</a>
+        </div>
+      <ul class="msg_list" id="messasgeUlList"></ul>
+	  <div class="msg_more" id="msg_more_button">加载更多</div>
+	  <div class="msg_more" id="msg_more_progress"><img src="/statics/public/image/progress.gif"/></div>
+    </div><!--mk_item3 end-->
+    
+    <div class="mk_item mk_item4 bg_color2">
+    	<ul>
+        <!--
+        	<li>
+            	<h3>福玛特商城APP开发</h3>
+                <div class="mk_itList">
+                	<a>￥250,000</a>
+                    <span>2016-3-21</span>
+                </div>
+            </li>
+		-->
+        <#assign needList = readNeedList(2,6)>
+		<#list needList as need>
+		<li>
+			<div><h3><a href="${need.needUrl}">${need.needTitle}</a></h3></div>
+			<div class="mk_itList"><a>
+			 <#if need.needBudget??>
+				<#if need.needBudget =='0.00'>
+					待商议
+				<#elseif need.needBudget == '0,1000'>
+					1千以下
+				<#elseif need.needBudget == '1000,3000'>
+					1千至3千
+				<#elseif need.needBudget == '3000,10000'>
+					3千至1万
+				<#elseif need.needBudget == '10000,30000'>
+					1万至3万
+				<#elseif need.needBudget == '30000,100000'>
+					3万至10万
+				<#elseif need.needBudget == '100000,300000'>
+					10万至30万
+				<#elseif need.needBudget == '300000,1000000'>
+					30万至100万
+				<#elseif need.needBudget == '1000000,100000000000'>
+					100万以上
+				<#else>
+					${need.needBudget}
+				</#if>
+			<#else>
+				待商议
+			</#if>
+			</a><span class="date">${need.needPublicTime?substring(0,10)}</span></div>
+		</li>
+		</#list>
+        
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    
+    <div class="itemBottom">
+    	以上您可能还感兴趣的项目
+      <!--  <a>更多 > </a>-->
+    </div>
+    
+
+    
+</div>
+</section>
+
+<div class="collect-info-wrap" style="display:none;">
+	<div class="container">
+    	<div class="twoCode">
+        	<div class="towCodeImg"></div>
+			<span>扫 码 使 用 手 机 app 竞 标 更 方 便！</span>
+            <div class="loseCode"><img src="/pc/need/image/code_bg.png"></div>
+        </div>
+    </div>
+</div>
+
+<div class="last"></div>
+
+<script>
+$(document).ready(function() {
+    setTimeout(function(){
+		$(".collect-info-wrap").animate({
+			"bottom":0
+		}, "slow");	
+	},2000);
+	$(".loseCode").click(function(){
+		$(this).parents(".collect-info-wrap").animate({
+			"bottom":"-160px"
+		}, "slow");
+	});
+	$("#messageContent").focus(function(){
+		$(".success_text").hide();
+	});
+});
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<div style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1256821722&web_id=1256821722" language="JavaScript"></script>
+</div>
+</body>
+</html>

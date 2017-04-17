@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+<meta charset="utf-8">
+<title>爱迪狗-让天下没有难开发的产品</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/public/js/base64.js"></script>
+<script type="text/javascript" src="/pc/center/project/center_project_detail.js"></script>
+<script type="text/javascript" src="/pc/center/project/center_project_function.js"></script>
+<script type="text/javascript" src="/pc/center/project/center_need_common.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link type="text/css" rel="stylesheet" href="/statics/zone/need/css/zone_need_detail.css">
+<link type="text/css" rel="stylesheet" href="/statics/zone/need/css/zone_competitive_detail.css">
+<link type="text/css" rel="stylesheet" href="/statics/zone/project/css/zone_project_detail.css">
+
+<style>
+.clearfix{ width:100%; clear:both; height:0;}
+.seeContract{ margin:20px auto; padding-left:60px;}
+.sc_pic {
+    text-align: center;
+    width: 190px;
+}
+.float_l {
+    float: left;
+}
+.seeContract .sc_info {
+    color: #666;
+    margin-left: 20px;
+}
+.float_l {
+    float: left;
+}
+
+.sc_pic .sc_img {
+    background: #000 none repeat scroll 0 0;
+    height: 129px;
+    margin: 0 auto;
+    width: 129px;
+}
+.sc_pic .color_f {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.color_f {
+    color: #ff7519;
+}
+.seeContract .sc_info ul {
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+.seeContract .sc_info ul .sc_li1 {
+    width: 400px;
+}
+.seeContract .sc_info ul li {
+    float: left;
+	margin:0;
+}
+
+.seeContract .sc_info ul li h4 {
+    font-size: 16px;
+    font-weight: lighter;
+	margin:0;
+}
+
+.seeContract .sc_info ul li .scList {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.click_read{ cursor:pointer;}
+#contractCUpdateTime, #contractBUpdateTime, #contractAUpdateTime{ display:block; padding:2px 0;} 
+</style>
+
+</head>
+<body>
+<div class="first"></div>
+<div class="container" style="width:1070px; background:#fff;">
+	<div class="box-nav">
+			当前位置：<a target="_blank" href="/">首页</a> &gt; <a href="/personal/">我的项目</a> &gt; <a>项目详情</a>
+	</div>
+	<div class="box left_box">
+		<ul class="con_nav">
+			<li class="li" style="margin-left:91px"><img id="needPhase1" src="/statics/public/image/step_bg_02.jpg">竞标中</li>
+			<li class="li"><img id="needPhase2" src="/statics/public/image/step_bg_01.jpg">实施中</li>
+			<li class="li"><img id="needPhase3" src="/statics/public/image/step_bg_01.jpg">待验收</li>
+			<li class="li"><img id="needPhase4" src="/statics/public/image/step_bg_01.jpg">评价</li>
+			<li class="li"><img id="needPhase5" src="/statics/public/image/step_bg_01.jpg">售后结束</li>
+		</ul>
+        <!--add contract-->
+        <div class="addContract">
+        	 <div class="seeContract">
+            	<div class="sc_pic float_l">
+                	<div class="sc_img"><img src="/statics/public/image/contractLogo.jpg" width="129"></div>
+					<div class="color_f click_read">查看合同</div>
+                </div>
+            	<div class="sc_info float_l">
+                	<ul>
+                    	<li class="sc_li sc_li1">
+                        	<h4>爱迪狗发起三方合同</h4>
+                            <div class="scList">
+                            	<span id="contractCUpdateTime"></span>
+                                操作人：深圳市云信天诚有限公司
+             <p style="margin:0;">联系电话：<span id="partyCPhone">400-837-0880</span></p>                   
+                            </div>
+                        </li>
+                    	<li class="sc_li sc_li2">
+                        	<h4 id="Bstatus"></h4>
+                            <div class="scList">
+                            	<span id="contractBUpdateTime"></span>
+                                操作人：<span id="partBname"></span>
+             <p style="margin:0;">联系电话：<span id="partyBPhone"></span></p>
+                            </div>
+                        </li>
+                    </ul>
+                	<ul>
+                    	<li class="sc_li sc_li1">
+                        	<h4 id="Astatus"></h4>
+                            <div class="scList">
+                            	<span id="contractAUpdateTime"></span>
+                                操作人：<span id="partAname"></span>
+             <p style="margin:0;">联系电话：<span id="partyAPhone"></span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!--add contract end-->
+		<div class="d_desc" style="background-color:#fff">
+			<div>
+			<span class="d_desc1">项目标题：</span><label id="needShow_needTitle"></label><br>
+			<span class="d_desc1">项目编号：</span><label id="needShow_needNo"></label><br>
+			<span class="d_desc1">发布时间：</span><label id="needShow_publishtime"></label><br>	
+			<span class="d_desc1">项目状态：</span><label id="needShow_status"></label><br>
+			<span class="d_desc1">竞标状态：</span><label id="needShow_competitivestatus"></label>
+			</div>
+			<div class="d_desc3"><label id="needShow_functionBtns"></label></div>
+		</div>
+		<ul class="d_tab">
+			<li onclick="_comFuns.setNeedDetailTab(this, 'needImplement')" id="li_needImplement">实施列表</li>
+			<li onclick="_comFuns.setNeedDetailTab(this, 'needDetail')" id="li_needDetail">项目详情</li>
+			<li onclick="_comFuns.setNeedDetailTab(this, 'needCompetitive')" id="li_needCompetitive">竞标详情</li>
+			<li onclick="_comFuns.setNeedDetailTab(this, 'needEvaluate')" id="li_needEvaluate">项目评价</li>
+		</ul>
+		<div class="d_tab_main" id="tab_needDetail">
+			<ul class="d_tab_title">
+				<li>基本信息：</li>
+			</ul>
+			<ul class="d_req">
+				<li>托管资金：<label id="needShow_needDeposit">0</label></li>
+				<li>项目预算：<label id="needShow_needBudget">0</label></li>
+				<li>竞标天数：<label id="needShow_needCompetitiveTimes">0天</label></li>
+				<li>选标天数：<label id="needShow_needChooseTimes">0天</label></li>
+				<li>行业类别：<label id="needShow_needCategory"></label></li>
+				<li>开发周期：<label id="needShow_needDevelopmentTimes">0天</label></li>
+			</ul>
+			<ul class="d_tab_title">
+				<li>资质要求：</li>
+			</ul>
+			<ul class="d_req">
+				<li>要求企业用户：<label id="needShow_needRequiredEnterprise">否</label></li>
+				<li>要求售后：<label id="needShow_needAfterSales">否</label></li>
+				<li>要求发票：<label id="needShow_needInvoice">否</label></li>
+				<li>要求第三方认证：<label id="needShow_needThirdAuth">否</label></li>
+				<li>要求具有成功案例：<label id="needShow_needRequiredCase">否</label></li>
+				<li>区域限制：<label id="needShow_needAreaList">不限制</label></li>
+				<li>技能要求：<label id="needShow_needTechniques">无要求</label></li>
+			</ul>
+			<ul class="d_tab_title">
+				<li>需求详情：</li>
+			</ul>
+			<div class="d_text">
+				<p id="needShow_needDesc"></p>
+				<ul class="d_attachment" id="needShow_needAttachment"></ul>
+			</div>
+			<div class="d_text" id="needSupplementDisplay"></div>
+		</div>
+		<div class="d_tab_main d_hidden" id="tab_needCompetitive">
+			<ul class="d_tab_title">
+				<li>竞标信息：</li>
+			</ul>
+			<ul class="d_req">
+				<li>竞标时间：<label id="competitiveShow_competitiveTime">0</label></li>
+				<li>超时处罚比例：<label id="competitiveShow_competitivePunishRate">0天</label></li>
+				<li>项目预算：<label id="competitiveShow_competitivePay">￥0</label></li>
+				<li>项目周期：<label id="competitiveShow_competitiveDevTimes">0天</label></li>
+				<li>后期服务时间：<label id="competitiveShow_competitiveServiceTimes">0天</label></li>
+				<li>后期维护保障金比率：<label id="competitiveShow_competitiveServiceDepositRate"></label></li>
+				<li>最大欠款比率：<label id="competitiveShow_competitiveNeedArrearsMaxRate"></label></li>
+			</ul>
+			<ul class="d_tab_title">
+				<li>竞标详情：</li>
+			</ul>
+			<div class="d_text">
+				<p id="competitiveShow_competitiveDesc"></p>
+				<ul class="d_attachment" id="competitiveShow_competitiveAttachment"></ul>
+			</div>
+			
+			<div class="MilePostPanel">
+				<div class="title1">项目进度里程碑：</div>
+				<div class="title2"></div>
+				<div class="MilePostInfoTitle">
+					<div class="MilePostTimeTitle">时间节点</div>
+					<div class="MilePostImgTitle"></div>
+					<div class="MilePostThingTitle">任务事项</div>
+				</div>
+				
+				<div id="milePostHtml">
+				
+					<div class="MilePostInfoPanel">
+						<div class="MilePostInfo">
+							<div class="MilePostTime" id="staryTime">--</div>
+							<div class="MilePostImg"><img src="/statics/zone/project/image/MileImg.png"></div>
+							<div class="MilePostThing">开始</div>
+							<div class="operation">
+								<!--<span id="editBtn"><img src="/statics/zone/project/image/edit.png">编辑</span>-->
+								<span id="addBtn"><img src="/statics/zone/project/image/add.png">添加</span>
+							</div>
+						</div>
+						  
+						<div class="MilePostEditPanel"  style="display:none;" >
+							<div class="MilePostEdit">
+								<div class="editDate">
+									<input type="text" id="milepostCycleAdd" placeholder="  开发周期（天）">
+								</div>
+								<div class="editPostImg"></div>
+								<div class="editThing">
+									<textarea id="nodeTitleAdd"></textarea>
+								</div>
+								<div class="btnCancel" id="btnCancel">取消</div>
+								<div class="btnSub" id="btnSub">提交</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<input id="nid" type="hidden">
+			<input id="cid" type="hidden">
+			<input id="flag" type="hidden">
+			
+		</div>
+		<div class="d_tab_main d_hidden" id="tab_needImplement">
+			<iframe id="implementsFrame" style="width:100%;margin-top:10px;" frameborder="no" scrolling="no"></iframe>
+		</div>
+		<div class="d_tab_main d_hidden" id="tab_needEvaluate">
+			<iframe id="evaluateFrame" style="width:100%;margin-top:10px;" frameborder="no" scrolling="no"></iframe>
+		</div>
+	</div>
+</div>
+<div class="last"></div>
+</body>
+</html>

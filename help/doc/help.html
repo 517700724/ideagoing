@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title>帮助中心</title>    
+<link type="text/css" rel="stylesheet" href="/pc/public/css/public.css">
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<style>
+#help .naver{padding:15px 20px}
+#help .lefter{float:left;}
+#help .lefter .listItem{width:220px;}
+#help .lefter .listItem span.tit{ display:block; font-size:16px; font-weight:bold; padding-left:40px; line-height:50px; border-bottom:#d1d1d1 1px solid}
+#help .lefter .listItem .txt a{ display:block; font-size:16px; line-height:50px; border-bottom:#eee 1px solid; padding-left:40px; color:#888}
+#help .lefter .listItem .txt a.cur{ color:#F60}
+#help .lefter .listItem .txt a span.icon{ }
+#help .righter{display:block;float:right;width:845px;}
+#help .righter span.tit{ display:block; font-size:16px; padding-left:10px; line-height:50px; border-bottom:#d1d1d1 1px solid;}
+#help .righter  div.txt{ padding:10px;overflow:auto;}
+#help .righter  div.txt h3.tit{ display:block; text-align:center;float:left;font-size:18px;}
+#help .righter  div.txt span.date{ display:block; text-align:center}
+#help .righter  div.txt div.content{ text-align:left; padding-top:10px;float:left;width:100%;color:#555;margin-bottom:10px;}
+.con_tab{
+width:100%;
+border-top:1px solid #ddd;
+border-right:1px solid #ddd;
+}
+.con_tab tr td{
+height:30px;
+border-left:1px solid #ddd;
+border-bottom:1px solid #ddd;
+padding:10px 20px;
+}
+.con_tab tr .bold{
+font-weight:bold;
+background-color:#f3f3f3;
+}
+</style>
+<script>
+function item_onmouseove(obj,i){
+	 $(".cur").removeClass("cur");
+	$(obj).addClass("cur");
+}
+</script>
+</head>
+<body ng-app="main">
+    <div class="first"></div> 
+    <div style="margin-top:42px;"><img src="/pc/help/doc/image/help.png" width="100%"/></div> 
+    <div class="container" id="help">
+        <div class="naver">当前位置：<a href="/" style="color:#000">首页</a> > 帮助中心</div> 
+        <div class="row" style="background-color: #fff;padding-top:10px;padding-bottom: 30px;">
+        	<div>
+            <div class="col-lg-3 lefter" style="top:0;" id="left_nav">
+                <div class="listItem">
+                    <span class="tit">新手指南</span>
+                    <div class="txt">
+                        <a href="#tab1" onclick="item_onmouseove(this,1)" class="cur">关于爱迪狗<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>
+                        <a href="#tab2" onclick="item_onmouseove(this,2)">用户注册<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a> 
+                        <a href="#tab3" onclick="item_onmouseove(this,3)">资金<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>          
+						<a href="#tab4" onclick="item_onmouseove(this,4)">发布需求<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>
+						<a href="#tab5" onclick="item_onmouseove(this,5)">参与竞标<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>
+						<a href="#tab6" onclick="item_onmouseove(this,6)">选标<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>
+						<a href="#tab7" onclick="item_onmouseove(this,7)">项目评价<span class="icon icon-angle-right" style="float:right;margin-right:20px;color:#ccc">&gt;</span></a>
+                    </div>               
+                </div>
+            </div>     
+            <div class="col-lg-9 righter">
+                <div class="txt" id="tab1">
+                    <h3 class="tit">爱迪狗是做什么的？</h3>
+                    <div class="content">
+                        <p>爱迪狗是一站式研发服务众包平台。你给我idea，我给你产品，过程我保障。</p>
+                    </div>
+					
+					<h3 class="tit">爱迪狗有什么功能以及特点？</h3>
+                    <div class="content">
+                        <p>资源整合，交易撮合，过程保障，持续升级，多快好省零风险。</p>
+                    </div>
+                    
+                    <h3 class="tit">爱迪狗与传统模式的区别</h3>
+                    <div class="content">
+                        <table class="con_tab">
+                        <tr>
+                        <td class="bold" width="30px">对比项</td>
+                        <td class="bold">传统模式</td>
+                        <td class="bold">爱迪狗模式</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">时间</td>
+                        <td>专人整合对接<br>15天-45天</td>
+                        <td>根据需求，专人整合对接<br>1-7天</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">人员</td>
+                        <td>需要采购+工程人员参与</td>
+                        <td>项目经理全程管控</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">找到的服务方数量</td>
+                        <td>3-5家</td>
+                        <td>10-50家</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">范围</td>
+                        <td>半径50KM-80KM</td>
+                        <td>全国范围内</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">成本</td>
+                        <td>沟通、交通、考察成本极高</td>
+                        <td>接近于0</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">风险</td>
+                        <td>失败率50%以上</td>
+                        <td>失败率5%以下</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">总结</td>
+                        <td colspan="2">多、快、好、省，零风险
+多，数量多，专业服务方多。【传统模式：采购与工程配合寻找配合企业，单个项目配合厂家3-5家对比】
+【爱迪狗模式：爱迪狗资源池自动匹配相关优质资源，邀约100-200家进行投标】
+快，节省了时间，快速匹配服务方，产品开发快。【传统模式：同时针对服务商交流需求，评估资质，商务谈判，时间耗费较多】
+【爱迪狗模式：平台项目部提供需求模板，快速整理需求，对接，竞标，选标签订电子合同】
+好，公平公正的竞标模式【传统模式：专业资源限制，难以提高需求匹配度，导致所选合作方专业程度低】
+【爱迪狗模式：海量资源，系统推荐优秀服务方，80%以上的匹配度】
+省，省钱，省力，省心，省时【传统模式：信息不对称导致外包费用增加】
+零风险。</td>
+                        </tr>
+                        </table>
+                    </div>
+                    
+                    <h3 class="tit">找到了服务方在“做项目”的时候遇到的问题</h3>
+                    <div class="content">
+                        <table class="con_tab">
+                        <tr>
+                        <td class="bold" width="120px">对比项</td>
+                        <td class="bold">传统模式</td>
+                        <td class="bold">爱迪狗模式</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">商业谈判到签订合同</td>
+                        <td>需要7天</td>
+                        <td>竞标模式到电子合同，3天</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">设计-制作过程-跟踪</td>
+                        <td>有专人跟单+技术工程师</td>
+                        <td>里程碑-系统-APP</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">实施过程中的沟通</td>
+                        <td>电话、邮件、QQ</td>
+                        <td>系统提供沟通软件-记录保存</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">沟通中的障碍</td>
+                        <td>项目拖延，达不到预期或失败</td>
+                        <td>专业的项目经理跟进，提出专业的意见，保证项目顺利实施</td>
+                        </tr>
+                        <tr>
+                        <td class="bold">项目结果</td>
+                        <td>1.开发成功<br>
+2.延期也算成功<br>
+3.失败
+</td>
+                        <td>1.成功，互评，好评（未来持续合作加分）<br>
+2.延期，扣款，中评或差评<br>
+3.失败，退款，差评，备选接上
+</td>
+                        </tr>
+                        </table>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab2">
+					<h3 class="tit">平台有那几种账户类型？</h3>
+                    <div class="content">
+                        <p>平台有两种账户，分别为企业、个人。
+企业：指有企业资质的法人。通过认证之后的企业用户可以在平台上发布需求，利用社会资源组织项目的提交，也可以利用企业固有的经验积累接包赚钱。 
+个人：在遵守国家法律法规和爱迪狗平台所有规则的前提下，符合条件的自然人可按照"爱迪狗平台的注册要求"完成相应的注册步骤，成为爱迪狗平台的个人用户，参与平台需求的发布和竞
+</p>
+                    </div>
+					<h3 class="tit">如何注册账户？</h3>
+                    <div class="content">
+                        <p>注册包含两种方式：
+    邀请注册。是指由已经在平台上注册的用户邀请您注册。这类邀请，您都将收到相应的短信或邮件，您只要接受邀请了，即同意了好友对您的背书。
+    自主注册。是指直接通过平台的注册页面填写个人基本信息进行注册的方式。注册时可填入邀请码（邀请人手机号码），享受邀请人提供的服务。
+</p>
+                    </div>
+					<h3 class="tit">注册用户会员收不收费?</h3>
+                    <div class="content">
+                        <p>注册账户不收取任何费用。</p>
+                    </div>
+					<h3 class="tit">用户注册一定要实名认证吗？</h3>
+                    <div class="content">
+                        <p>不一定，但是服务方竞标前需先完成实名认证。</p>
+                    </div>
+					<h3 class="tit">可以注册多个会员吗？</h3>
+                    <div class="content">
+                        <p>一个手机号码只能注册一个会员。</p>
+                    </div>
+					<h3 class="tit">是不是要先注册用户才能参与竞标？</h3>
+                    <div class="content">
+                        <p>是的，并且要完成实名认证。</p>
+                    </div>
+					<h3 class="tit">用户注册要绑定银行卡等支付账号吗？</h3>
+                    <div class="content">
+                        <p>不需要，但是取现的时候需要绑定银行卡。</p>
+                    </div>
+					<h3 class="tit">注册用户有没有等级区分?</h3>
+                    <div class="content">
+                        <p>没有，但是系统会对用户行为进行分类，提供不同级别的专业化服务。</p>
+                    </div>
+					<h3 class="tit">会员如何注销？</h3>
+                    <div class="content">
+                        <p>暂时不能注销会员号。如有需要可以联系客服。</p>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab3">
+					<h3 class="tit">为什么要资金托管？</h3>
+                    <div class="content">
+                        <p>为了保证双方的项目正常进行，项目资金托管到爱迪狗后，对交易安全是一个强有力的保障。</p>
+                    </div>
+					
+						<h3 class="tit">资金托管安全吗？</h3>
+                    <div class="content">
+                        <p>我们确保用户的项目资金安全。</p>
+                    </div>
+						<h3 class="tit">资金托管到哪里？</h3>
+                    <div class="content">
+                        <p>资金托管到爱迪狗平台。</p>
+                    </div>
+						<h3 class="tit">资金托管怎么退还？</h3>
+                    <div class="content">
+                        <p>如项目中止，托管资金则退回到用户的资金账户；如项目完成则打入服务方的资金账户。客户资金账户的资金可随时转回自己的银行账户。</p>
+                    </div>
+						<h3 class="tit">资金托管的金额是多少？</h3>
+                    <div class="content">
+                        <p>项目实施的时候根据和服务方的协商托管资金。</p>
+                    </div>
+						<h3 class="tit">资金托管一般多久？</h3>
+                    <div class="content">
+                        <p>根据项目实施的时间，项目完成交付验收以后完成托管。</p>
+                    </div>
+						<h3 class="tit">一定要资金托管吗？</h3>
+                    <div class="content">
+                        <p>为了保障需求方和服务方的利益，按可以协商比例托管资金。</p>
+                    </div>
+						<h3 class="tit">资金托管在哪显示？</h3>
+                    <div class="content">
+                        <p>托管资金显示在项目详情中。</p>
+                    </div>
+						<h3 class="tit">资金托管是个人托管，还是企业托管？</h3>
+                    <div class="content">
+                        <p>根据用户类型，个人账户就是个人托管，企业账户就是企业托管。</p>
+                    </div>
+						<h3 class="tit">资金托管会扣款吗？</h3>
+                    <div class="content">
+                        <p>项目没有完成之前不会扣款。</p>
+                    </div>
+						<h3 class="tit">如何充值？</h3>
+                    <div class="content">
+                        <p>在资金管理菜单，点击充值，充值可以选择在线充值和转账汇款两种模式。</p>
+                    </div>
+						<h3 class="tit">如何取款？</h3>
+                    <div class="content">
+                        <p>在资金管理菜单，点击取现，取现之前需要实名认证和绑定银行账号。</p>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab4">
+						<h3 class="tit">发布需求怎么操作？</h3>
+                    <div class="content">
+                        <p>在首页点击发布需求，按流程操作。</p>
+                    </div>
+						<h3 class="tit">发布需求需要具备哪些条件？</h3>
+                    <div class="content">
+                        <p>任何注册用户都可以发布需求。</p>
+                    </div>
+						<h3 class="tit">发布需求的设置金额一般是多少？</h3>
+                    <div class="content">
+                        <p>根据用户实际需求设置预算金额，合适的预算可以找到优质的服务方。</p>
+                    </div>
+						<h3 class="tit">发布需求需要付费吗？</h3>
+                    <div class="content">
+                        <p>发布需求可以托管诚意金，也可以选择不托管诚意金，托管诚意金有利于提高服务方接包意愿。</p>
+                    </div>
+						<h3 class="tit">爱迪狗平台承接项目需求高效吗？</h3>
+                    <div class="content">
+                        <p>爱迪狗平台承接需求效率远远高于线下模式。</p>
+                    </div>
+						<h3 class="tit">发布需求后能不能找到合适的服务方。</h3>
+                    <div class="content">
+                        <p>在爱迪狗平台能提供服务方的数量远远多于线下模式。</p>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab5">
+						<h3 class="tit">竞标是什么意思？</h3>
+                    <div class="content">
+                        <p>参与需求方发布项目的投标。</p>
+                    </div>
+						<h3 class="tit">怎么参与竞标？</h3>
+                    <div class="content">
+                        <p>在首页或者需求市场寻找合适自己的项目可以参与竞标报价。</p>
+                    </div>
+						<h3 class="tit">竞标靠谱吗？</h3>
+                    <div class="content">
+                        <p>服务方能按时完成项目，就能按约定拿到项目款。</p>
+                    </div>
+						<h3 class="tit">竞标一般什么时候结束？</h3>
+                    <div class="content">
+                        <p>根据需求方设定的时间和需求方选标的进度3-28天，如果有合适投标方案报价，需求方可能会提前结束竞标。</p>
+                    </div>
+						<h3 class="tit">竞标要交钱吗？</h3>
+                    <div class="content">
+                        <p>竞标不需要交钱，但是服务方可以通过交保障金的方式增加竞争力。</p>
+                    </div>
+						<h3 class="tit">竞标后如何知道中标？</h3>
+                    <div class="content">
+                        <p>竞标中标之后系统会消息通知服务方。</p>
+                    </div>
+					
+						<h3 class="tit">竞标有哪些要求？</h3>
+                    <div class="content">
+                        <p>竞标之前需要进行实名认证。</p>
+                    </div>
+						<h3 class="tit">竞标是不是很难？</h3>
+                    <div class="content">
+                        <p>竞标很容易，服务方可以通过完善资料，提供合适的报价，承诺项目保证金等方式增加自己的竞争力。</p>
+                    </div>
+						<h3 class="tit">中标后如何开展项目合作。</h3>
+                    <div class="content">
+                        <p>中标后，服务方按合同实施项目并按约定交付验收成果。</p>
+                    </div>
+						<h3 class="tit">中途可以退出竞标吗？</h3>
+                    <div class="content">
+                        <p>服务方没有中标之前可以随时退出竞标。</p>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab6">
+						<h3 class="tit">选标怎么操作？</h3>
+                    <div class="content">
+                        <p>在我的需求页面，选择需要选标的需求，点击选标按钮进行选标。</p>
+                    </div>
+						<h3 class="tit">选标大概是什么时间？</h3>
+                    <div class="content">
+                        <p>需求方在竞标期和选标期都可以选标，竞标期由需求方设定，选标期为固定3天。</p>
+                    </div>
+						<h3 class="tit">选标过程中爱迪狗有没有给建议？</h3>
+                    <div class="content">
+                        <p>选择之前需求方尽量和服务方充分沟通，签订合同。爱迪狗项目工程师会帮需求方进行项目需求分解工作。</p>
+                    </div>
+						<h3 class="tit">确定服务方后如何开展工作？</h3>
+                    <div class="content">
+                        <p>选标完成之后需求方向服务方发起实施并托管项目款，服务方同意实施之后等待服务方实施。</p>
+                    </div>
+						<h3 class="tit">没有想要的竞标方该怎么办？</h3>
+                    <div class="content">
+                        <p>修改招标条件重新招标。将招标页面链接在各技术群组中分享，吸引有能力的服务商注册接包。</p>
+                    </div>
+						<h3 class="tit">选标可以延期吗？</h3>
+                    <div class="content">
+                        <p>选标不可以延期，但是可以重新发布。</p>
+                    </div>
+						<h3 class="tit">不选标会怎么样？</h3>
+                    <div class="content">
+                        <p>不选标需求会过期。</p>
+                    </div>
+						<h3 class="tit">爱迪狗会通知我们选标吗？</h3>
+                    <div class="content">
+                        <p>会的，如有服务方竞标系统会消息通知需求方。</p>
+                    </div>
+						<h3 class="tit">选标要付费给平台吗？</h3>
+                    <div class="content">
+                        <p>选标时不需要付费。</p>
+                    </div>
+				</div>
+				
+				<div class="txt" id="tab7">
+						<h3 class="tit">如何在爱迪狗平台上写评价？</h3>
+                    <div class="content">
+                        <p>项目完成时候有填写评价页面。</p>
+                    </div>
+						<h3 class="tit">评价什么时候写？</h3>
+                    <div class="content">
+                        <p>项目验收完成并付款之后。</p>
+                    </div>
+						<h3 class="tit">一定要写评价吗，不写会怎么样？</h3>
+                    <div class="content">
+                        <p>可以不填写，如没有填写系统会在30天之后自动给双方好评。</p>
+                    </div>
+						<h3 class="tit">评价可以修改或者删除吗？</h3>
+                    <div class="content">
+                        <p>评价之后不能更改。</p>
+                    </div>
+						<h3 class="tit">评价会在爱迪狗平台上显示吗？</h3>
+                    <div class="content">
+                        <p>评价显示在个人主页。</p>
+                    </div>
+					
+						<h3 class="tit">如何得到好评？</h3>
+                    <div class="content">
+                        <p>按时，按质的完成任务。</p>
+                    </div>
+					
+						<h3 class="tit">评论包括哪些内容？</h3>
+                    <div class="content">
+                        <p>需求方对服务方的评价包含：服务态度，完成质量，完成速度 
+服务方对需求方的评价包含：需求明确，沟通顺畅，项目质量 </p>
+                    </div>
+                </div>
+			</div>
+        </div>
+    </div>
+    </div>
+<div class="last"></div>
+<div style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1256821722&web_id=1256821722" language="JavaScript"></script>
+</div>
+</body>
+</html>

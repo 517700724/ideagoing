@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人中心</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/center/center_index.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/center/css/style.css">
+
+</head>
+
+<body>
+<div class="first"></div>
+
+<div class="centerBox">
+<div class="container">
+
+	<div class="prj_top">
+    	<div class="prj_top_l float_l">用户ID:<span class="color_f" id="custNo">145688751322740</span></div>
+        <h3 id="itemTitle">我承接的项目</h3>
+        <div class="clearfix"></div>
+    </div>	
+    
+	<div class="prj_box">
+    	<div class="prj_main_l float_l">
+        	<div class="userId">
+            	<p id="nickName">u145688751322740</p>
+            	<div class="usertImg"><img id="custImage" src="/pc/center/image/person_bg.png"></div>
+            </div>
+            <div class="center_menu">
+            	<div class="menu_list">
+                	<h3>免费推广模块</h3>
+                    <ul>
+                    	<li id="centerItem_personal">我的推广中心</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>业务规则模块</h3>
+                    <ul>
+                    	<li id="centerItem_employersBook">雇主入门</li>
+                    	<li id="centerItem_employersGuarantee">雇主保障</li>
+                    	<li id="centerItem_serviceBook">服务商入门</li>
+                    	<li id="centerItem_serviceGuarantee">服务商保障</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>资金管理模块</h3>
+                    <ul>
+                    	<li>资金账户</li>
+                    	<li>实名认证</li>
+                    	<li>推广分佣</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>订单管理模块</h3>
+                    <ul>
+                    	<li class="index">我发布的项目（雇主）</li>
+                    	<li id="centerItem_project">我承接的项目（服务商）</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>消息管理</h3>
+                    <ul>
+                    	<li>站内重要消息</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>交际圈</h3>
+                    <ul>
+                    	<li id="centerItem_personBase">个人资料</li>
+                    	<li id="centerItem_focus">我的关注</li>
+                    	<li id="centerItem_fansList">我的粉丝</li>
+                    </ul>
+                </div>
+            	<div class="menu_list">
+                	<h3>收藏夹</h3>
+                    <ul>
+                    	<li>项目收藏</li>
+                    	<li>服务技能收藏</li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--prj_main_l end-->
+    	
+        <div class="prj_main_r float_r">			
+              <iframe class="center_frame" id="center_frame" onload="autoIframeHeight()" frameborder="no" scrolling="no"></iframe>  
+        </div>
+        
+        </div><!--prj_main_r end-->
+        <div class="clearfix"></div>
+    </div><!--prj_box end-->
+</div>
+</div>
+
+<div class="last"></div>
+</body>
+<script>
+$(function(){
+	$(".p_needList").each(function(i, element) {
+        if(i%2==0){
+			$(this).css({
+				"background":"#fff"
+			});
+		}else{
+			$(this).find(".nl_top").css({
+				"border-color":"#fff"
+			});
+			$(this).css({
+				"background":"#e5e5e5"
+			})
+		}
+    });
+})
+</script>
+</html>
+
+
+

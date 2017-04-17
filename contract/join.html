@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>合同参与竞标</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/contract/join.js"></script>
+
+<script type="text/javascript" src="/statics/public/public-page.js"></script>
+<script type="text/javascript" src="/statics/public/FileUpload.js"></script>
+<script type="text/javascript" src="/pc/contract/contract_upload2.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/style.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/contract.css">
+
+</head>
+
+<body style="background: #ccc;">
+	<!-- ------------------------competiveView start-------------------------- -->
+	<div id="competiveView">
+		<form id="submitForm">
+			<input name="successCaseId" id="successCaseId" type="hidden" >
+			<input name="needId" id="needId" type="hidden">
+			<div class="contract_box" style="padding-top:0px;">
+				<div class="ct_top ct_main">
+					<div class="ct_topList">
+						<h3 id="pro_title"></h3>
+					</div>
+					<div class="ct_topList">
+						<label>项目报价</label>
+						<div class="ct_inputBox">
+							<input type="text" id="competitivePay" name="competitivePay"
+								value="" placeholder="报出您的价格">元
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_topList">
+						<label>实施工期</label>
+						<div class="ct_inputBox">
+							<input type="text" id="competitiveDevTimes"
+								name="competitiveDevTimes" value="" placeholder="预计多长时间能完成">天
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_topList ct_topList1">
+						<label>竞标描述</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_textarea">
+						<textarea id="competitiveDesc" name="competitiveDesc" placeholder="简单描述你能完成项目的优势，提高中标率。"></textarea>
+					</div>
+				</div>
+				<div class="ct_md">
+					<p class="ct_mdText">
+						项目保障金，我承诺愿意托管项目合同款的<input id="competitiveDepositRate"
+							name="competitiveDepositRate"
+							style="text-align: center; border-width: medium medium 1px; border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color rgb(0, 0, 0); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; width: 80px;">%
+						为项目顺利完成的保障金。
+					</p>
+					<p class="ct_mdText1">保障金是为了保障项目的顺利实施，金额是基于您的项目报价，此款项在项目按
+						时保质结项后全额退回到您的账户。</p>
+				</div>
+				<div class="ct_bottom ct_main">
+					<div class="ct_btn ct_btn1 btn float_l" id="success_case">成功案例上传</div>
+					<div class="ct_btn ct_btn2 float_r">
+						我需要向雇主承诺<img src="/pc/project/recruit/image/big_san.jpg">
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="ct_show">
+					<div class="ct_main">
+						<div class="ct_showText">
+							您还可以向雇主承诺以下任意一项或几项内容，<br> 提高竞争力，促进雇主快速与您合作
+						</div>
+						<div class="ct_topList ct_topList2">
+							<label>A.超时处罚</label>
+							<div class="ct_inputBox">
+								<input name="competitivePunishRate" id="timeoutPunish"
+									readonly="readonly" type="text" class="select_box" value="0"
+									onclick="showTimeoutPunishList()">%
+								<ul class="ratelist" id="timeoutPunishList">
+									<li onclick="clickTimeoutPunishList(0)">0%</li>
+									<li onclick="clickTimeoutPunishList(0.5)">0.5%</li>
+									<li onclick="clickTimeoutPunishList(1)">1%</li>
+									<li onclick="clickTimeoutPunishList(2)">2%</li>
+									<li onclick="clickTimeoutPunishList(4)">4%</li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="ct_topList ct_topList2">
+							<label>B.后期维护</label>
+							<div class="ct_inputBox">
+								<input name="competitiveServiceTimes" id="laterMaintain"
+									readonly="readonly" type="text" class="select_box" value="0"
+									onclick="showLaterMaintainList()">天
+								<ul class="ratelist" id="laterMaintainList">
+									<li onclick="clickLaterMaintainList(0)">0</li>
+									<li onclick="clickLaterMaintainList(90)">90</li>
+									<li onclick="clickLaterMaintainList(180)">180</li>
+									<li onclick="clickLaterMaintainList(360)">360</li>
+									<li onclick="clickLaterMaintainList(720)">720</li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="ct_topList ct_topList2">
+							<label>C.项目尾款</label>
+							<div class="ct_inputBox">
+								<input name="competitiveServiceDepositRate" id="laterPayment"
+									readonly="readonly" type="text" class="select_box" value="0"
+									onclick="showLaterPaymentList()">%
+								<ul class="ratelist" id="laterPaymentList">
+									<li onclick="clickLaterPaymentList(0)">0%</li>
+									<li onclick="clickLaterPaymentList(5)">5%</li>
+									<li onclick="clickLaterPaymentList(10)">10%</li>
+									<li onclick="clickLaterPaymentList(20)">20%</li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="ct_topList ct_topList2">
+							<label>D.最大欠款比率</label>
+							<div class="ct_inputBox">
+								<input name="competitiveNeedArrearsMaxRate"
+									id="competitiveNeedArrearsMaxRate" readonly="readonly"
+									type="text" class="select_box" value="0"
+									onclick="showCompetitiveNeedArrearsMaxRateList()">%
+								<ul class="ratelist" id="competitiveNeedArrearsMaxRateList">
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(0)">不允许</li>
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(10)">10%</li>
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(20)">20%</li>
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(30)">30%</li>
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(40)">40%</li>
+									<li onclick="clickCompetitiveNeedArrearsMaxRate(50)">50%</li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ct_read">
+					<input type="checkbox" id="agreeRules"> 我已阅读并同意 <a target="_blank" href="/article/details/23.html">
+						《承接项目规则》</a> 与 <a target="_blank" href="/article/details/19.html">《保密协议》</a>
+
+				</div>
+				<div class="joinBtn">
+					<div class="j_btn" id="submitButton">参与竞标</div>
+				</div>
+				<div class="ct_close">
+					<img src="/pc/help/about/guide/image/closeImg.jpg">
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- ------------------------competiveView end-------------------------- -->
+
+	<!-- ------------------------success caseView start-------------------------- -->
+	<div class="contract_box contract_upLoad" id="successCaseView" style="display:none;">
+		<div class="r_menu_top">
+			<ul>
+				<li class="index" id="upcase">上传成功案例</li>
+				<li id="selectcase">选择成功案例</li>
+			</ul>
+		</div>
+
+		<div class="prd_iteamBox">
+			<div id="upcase_div" class="prd_iteam"
+				style="display: block; height: 395px;">
+				<div class="ct_top ct_main">
+					<div class="ct_topList">
+						<h3>上传成功案例，提升中标率</h3>
+					</div>
+					<div class="ct_topList">
+						<label>案例名称<span>(必填)</span></label>
+						<div class="ct_inputBox">
+							<input type="text" value="" id="serviceTitle" placeholder="案例名称">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_topList ct_topList1">
+						<label>描述</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_textarea">
+						<textarea id="serviceDesc" placeholder="简单描述"></textarea>
+					</div>
+				</div>
+
+				<div class="upLoad_pic" style="margin: 0 20px; background: none;">
+					<p class="up_text" id="showAttachment" style="padding: 10px 0;"></p>
+					<div class="com_pic" style="margin: 0;">+ 从电脑选择图片上传</div>
+					<p
+						style="padding-top: 10px; margin-left: 20px; color: rgb(255, 103, 0);"
+						class="up_text">一次只能选一个，可选多次，总附件不能大于50MB，最多只能上传3个附件。目前只支持.doc
+						.xls .pdf .txt .jpg .png .ppt .zip .rar等格式的文件</p>
+				</div>
+			</div>
+
+			<div id="selectcase_div" class="prd_iteam" style="height: 380px;">
+				<div class="upLoad_list">
+					<ul id="caseList">
+						<li>
+							<div class="upLoad_img float_l"></div>
+							<div class="upLoad_info float_l">成功案例图标</div>
+							<div class="upLoad_radio float_r">
+								<input type="radio" name="ulRadio">
+							</div>
+							<div class="clearfix"></div>
+						</li>
+						<li>
+							<div class="upLoad_img float_l"></div>
+							<div class="upLoad_info float_l">成功案例图标成功案例图标成功案例图标</div>
+							<div class="upLoad_radio float_r">
+								<input type="radio" name="ulRadio">
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+				</div>
+				<div class="case_list_page" id="zonePager"></div>
+				<!--prd_iteam end-->
+
+			</div>
+			<div class="joinBtn">
+				<span class="subinput"><input id="sub_select"
+					style="display: none;" type="submit" value="提交"></span>
+				<div class="tj_btn" id="sub_update">
+					<form target="uploadFrame" method="post"
+						enctype="multipart/form-data" name="uploadForm" id="uploadForm"
+						action="/dfs/dfs/upload.dfs?imgProcess=1">
+						<span class="subinput"><input type="submit" value="提交"></span>
+						<div
+							style="position: absolute; width: 160px; border-radius: 5px; height: 32px; line-height: 32px; color: rgb(255, 255, 255); background: rgb(255, 102, 0) none repeat scroll 0% 0%; text-align: center; cursor: pointer; top: 345px; z-index: 1; margin-left: 30px;"
+							id="caseAddAttachment">图片文档上传</div>
+					</form>
+				</div>
+			</div>
+			<div class="ct_close">
+				<img src="/pc/help/about/guide/image/closeImg.jpg">
+			</div>
+		</div>
+		<input type="hidden" name="caseAttachment" id="caseAttachment" />
+		<iframe name="uploadFrame" id="uploadFrame"
+			style="width: 100%; height: 50px; display: none;"></iframe>
+	</div>
+	<!-- ------------------------success caseView end-------------------------- -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>等待雇主选标</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/public/js/base64.js"></script>
+<script type="text/javascript" src="/pc/contract/contract_center.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/style.css">
+
+</head>
+
+<body style="background:#ccc;">
+
+	<div class="contract_box contract_center">
+    	<div class="ct_centerMain ct_main">
+			<div class="ct_mainTop"><img src="/pc/contract/image/center_pic1.png">等待雇主选标，请关注您的<a href="javascript:goPersonal()">个人业务中心</a>！</div>
+        </div>
+
+		<div class="center_main">
+        	<p class="ct_edit_title">你还可以编辑合同</p>
+            <div class="editBox"></div>
+            <p class="click_read">点击阅读合同</p>
+        </div>
+        
+
+        <div class="joinBtn">
+        	<div class="contract_list">
+            	<h3>爱迪狗发起三方合同</h3>
+                <div class="contract_time">
+                	<span class="ct_time" id="contractCUpdateTime">2016-04-11</span>
+                    操作人：深圳市云信天诚有限公司
+                </div>
+                <div class="contract_time">
+                     	 联系方式：<span id="partyAPhone">400-837-0880</span>
+                </div>
+            </div>
+        	<div class="contract_list">
+            	<h3 id="Astatus">甲方，正在操作</h3>
+                <div class="contract_time">
+                	<span class="ct_time" id="contractAUpdateTime">2016-04-11</span>
+                     	 操作人：<span id="partAname"></span>
+                </div>
+                <div class="contract_time">
+                     	 联系方式：<span id="partyAPhone">光光光光光光光光</span>
+                </div>
+            </div>
+        	<div class="contract_list contract_last">
+            	<h3 id="Bstatus">已方，正在操作</h3>
+                <div class="contract_time">
+                	<span class="ct_time" id="contractBUpdateTime">2016-04-11</span>
+                       	  操作人：<span id="partBname"></span>
+                </div>
+                <div class="contract_time">
+                     	 联系方式：<span id="partyBPhone">光光光光光光光光</span>
+                </div>
+            </div>
+        </div>
+        <div class="ct_close"><img src="/pc/help/about/guide/image/closeImg.jpg"></div>
+    </div>	
+</body>
+</html>

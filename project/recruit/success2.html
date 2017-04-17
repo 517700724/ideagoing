@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>success2</title>
+<script src="js/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style/public.css">
+<link rel="stylesheet" type="text/css" href="style/css.css">
+<style>
+
+</style>
+</head>
+
+<body>
+<div class="first"></div>
+<section>
+	<div class="typeBox">
+    	<div class="typeTitle"><img src="image/classBg3.jpg"></div>
+        <div class="boxBorder success_box">
+        	<div class="success_text set_color">
+            	恭喜！提交成功！等待20分钟之内审核！
+            </div>
+            <p class="s_phone">您可以去完善项目需求，以便接项目的服务商更清晰地完成项目</p>
+            <div class="sc_btn sc_btn1"><a class="btn goMove" href="javascript:;">去完善</a></div>
+            <div class="uCan">你还可以<a class="set_color" href="">邀请服务方参加竞标</a></div>
+        </div>
+    </div>
+    <form action="" method="">
+    <div class="r_moveBox">
+    	<div class="moveTop"><a class="rm_btn" href="javascript:;"><img src="image/r_moveImg.jpg"></a></div>
+        <div class="moveContainer">
+        	<div class="m_h3"><span>项目要求详细描述:</span><a class="btn rm_btn" href="">使用模板</a></div>
+            <div class="rm_text">
+            	<textarea class="bg_color2" placeholder="您需要把您想做的项目要求描述的更详细！以便服务商更好的完成项目。"></textarea>
+            </div>
+            <div class="up_btn upDataBox">
+                <div class="upDataBtn">
+                    <a href="" class="up_btn">上传附件</a>
+                    <a href="" class="up_fj">附件要求？</a>
+                </div>
+            </div>
+            
+            <div class="writeMsg_show">
+                <ul class="item_ul item_ul1">
+                    <li><h3>附加设置：以下信息可关闭不填</h3></li>
+                    <li>
+                        <label>是否公开</label>
+                        <div class="list_chbox">
+                            <div class="list_chbox_r"><input type="checkbox" checked value=""><span>公开竞标</span></div>
+                            <div class="list_chbox_r"><input type="checkbox" checked value=""><span>不公开竞标</span></div>
+                        </div>
+                    </li>
+                    <li><label>开发时间</label><div class="w_list_input"><input class="bg_color2" type="text" placeholder="希望服务商多长时间完成"></div></li>
+                    <li><label>竞标天数</label><div class="w_list_input w_jbday bg_color2">7</div></li>
+                    <li><label>技能要求</label><div class="w_list_input"><input class="bg_color2" type="text" placeholder="最多填5个，以逗号隔开"></div></li>
+                    <li><label>区域限制</label><div class="w_list_input w_jbday bg_color2">全国</div></li>
+                </ul>
+                <ul class="item_ul item_ul2">
+                    <li><h3>资质要求：</h3></li>
+                    <li><input type="checkbox" checked value=""><span>企业用户（只有认证企业才能竞标）</span></li>
+                    <li><input type="checkbox" checked value=""><span>要求发票（要求服务方提供发票）</span></li>
+                    <li><input type="checkbox" checked value=""><span>要求有案例（拥有案例的服务方才能竞标）</span></li>
+                    <li><input type="checkbox" checked value=""><span>第三方认证（需要由服务方提供第三认证）</span></li>
+                </ul>
+            </div><!--writeMsg_show end-->
+            <div class="rs_div rs_sure w_sure text_m"><input type="checkbox"><span class="userCk">我已经阅读并接受<span>《发布需求规则》</span></span></div>
+        </div>
+        	<div class="rm_bnt text_m"><input class="btn" type="submit" value="注册"></div>
+    </div><!--r_moveBox end-->
+    </form>
+</section>
+<div class="last"></div>
+
+<script>
+$(function(){
+	$(".goMove").click(function(){
+		$(".r_moveBox").animate({
+			right:"0",
+			},"slow");
+	});
+	$(".rm_btn").click(function(){
+		$(this).parents(".r_moveBox").animate({
+			right:"-430px",
+			},"slow");
+	})
+})
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

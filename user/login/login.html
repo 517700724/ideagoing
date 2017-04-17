@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>login</title>
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script src="/pc/public/js/public-utils.js"></script>
+<script src="/pc/user/login/login.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/public/css/css.css">
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+<div>
+<form action="" method="">
+	<div class="loginTop">
+    	<div class="logoLink" id="quick_recurit"><a href="">免登录快速发布</a></div>
+        <h3>完成项目响当当</h3>
+    </div>
+    <div style="color: rgb(255, 102, 0); width: 100%; text-align: center; height: 17px;" id="errortxt"></div>
+    <div class="loginMain">
+    	<p><label>登录帐号</label><input id="userName" class="loginIp loginUser" type="text" value="" name="userName" placeholder="登录名"></p>
+    	<p><label>登录密码</label><input id="password" class="loginIp loginPsd" type="password" value="" name="password" placeholder="密码"></p>
+       	<div style="width:100%;" id="validateCode_div"></div>
+        <p><label>&nbsp;</label><img alt="√" okval="0" src="/pc/public/image/unselect.png" id="remember">
+        	<span class="userCk">记住登录名</span><a class="findPassword" onclick="rPassword()" href="">找回密码</a>
+        </p>
+    </div>
+    <div class="loginBg">
+    	<div class="loginBtn">
+        	<a class="nowBtn" id="loginButton">立即登录</a>
+            <p><a class="registerLink" href="">没有注册? 点击注册</a></p>
+        </div>
+    </div>
+   <!-- <div class="closeLogin"><img src="/pc/help/about/guide/image/closeImg.jpg"></div>  -->
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>完善需求</title>
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script src="/pc/public/js/public-utils.js"></script>
+<!-- <script type="text/javascript" src="/js/geography.js"></script>
+<script type="text/javascript" src="/pc/public/js/FileUpload.js"></script>
+<script src="/pc/project/recruit/recruit_details.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/public/css/css.css">
+<!-- <style>
+.r_moveBox .writeMsg_show ul li{ position:relative;}
+.r_moveBox .writeMsg_show .select_list{ border:1px solid #e5e5e5; border-top:none; width:261px;top:29px; left:78px; position:absolute; z-index:5;}
+.r_moveBox .writeMsg_show .select_list li{ padding:5px 10px; font-size:14px; color:#333;}
+.r_moveBox .writeMsg_show .select_list li:hover{ background:#ff751a; color:#fff;}
+.tj_btn input{ cursor:pointer;width:200px;border-radio:5px; border:none; background:#ff751a; color:#fff; font-size:20px; padding:5px 0; margin:10px auto; display:block; font-weight:bold;
+
+</style> -->
+</head>
+
+<body>
+<div class="first"></div>
+<!-- <input id="updateOrSave" type="hidden" value="0"> -->
+
+<section>
+	<div class="typeBox">
+    	<div class="typeTitle"><img src="/pc/project/recruit/image/classBg3.jpg"></div>
+        <div class="boxBorder success_box">
+        	<div class="success_text set_color">
+            	恭喜！提交成功！等待20分钟之内审核！
+            </div>
+            <p class="s_phone">您可以去完善项目需求，以便接项目的服务商更清晰地完成项目</p>
+            <div class="sc_btn sc_btn1"><a class="btn goMove" href="javascript:;">去完善</a></div>
+            <div class="uCan">你还可以<a style="cursor:pointer;" class="set_color" onclick="forwardCustStore()">邀请服务方参加竞标</a></div>
+        </div>
+    </div>
+    <script>
+	    
+    </script>
+    <!-- <form> -->
+    <div class="r_moveBox">
+    	<div class="moveTop" style="height:35px;">
+    		<a class="rm_btn" href="javascript:;">
+    			<img src="/pc/project/recruit/image/r_moveImg.png">
+    		</a>
+    	</div>
+   		<!-- <iframe src="/pc/project/recruit/recruit_successful2_right.html"></iframe> -->
+    </div><!--r_moveBox end-->
+</section>
+<div class="last"></div>
+
+<script>
+$(function(){
+	$(".goMove").click(function(){
+		$(".r_moveBox").animate({
+			right:"0"
+			},"slow");
+		
+	});
+	$(".rm_btn").click(function(){
+		$(this).parents(".r_moveBox").animate({
+			right:"-430px"
+			},"slow");
+		
+	})
+	
+	var categoryId = _jM.getParam("id");
+	var proneedid = _jM.getParam("proneedid");
+	var src="/pc/project/recruit/recruit_successful2_right.html?id="+categoryId+"&proneedid="+proneedid;
+	var html="<iframe style='width:100%;height:100%;border:none;' src='"+src+"'></iframe>";
+	$(".r_moveBox").append(html);
+});
+
+function forwardCustStore(){	
+	var proneedid = _jM.getParam("proneedid");
+	window.location.href = '/pc/sever/serviceLibrary/sever_provider_list.html?needId='+(proneedid==null?'':proneedid)+'&queryMode=1';
+}
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>服务商详情</title>
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/sever/serviceLibrary/sever_provider_details.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/sever/css/style.css">
+<style type="text/css">
+.content_m.float_l img {
+    width: 24px;
+}
+</style>
+<script type="text/javascript">
+function setImgSize(dom){
+	var _pic = $(dom);
+	var _w = _pic.width();
+	var _h = _pic.height();
+	var scale = _w / _h;	//比例
+	//按比例缩放
+	if(_w > 300)
+	{
+		_w = 300;
+		_h = parseInt(_w / scale);
+	}
+	if(_h > 300)
+	{
+		_h = 300;
+		_w = parseInt(_h * scale);
+	}
+	//图片容器大小
+	_pic.attr('style','width:'+_w+'px;height:'+_h+'px;position:absolute;left:50%;margin-left:-'+Math.ceil(_w/2)+'px;top:50%;margin-top:-'+Math.ceil(_h/2)+'px');
+}
+</script>
+</head>
+
+<body style="background:#fafafa;">
+<div class="first"></div>
+<section>
+	<#assign cust = readPersonal(pubCatalog.refId)>
+    <#setting date_format="yyyy-MM-dd">
+	<div class="container">
+    	<div class="sv_top">
+        	<ul>
+            	<li class="sv_top_list">当前位置：</li>
+                <li class="sv_top_list"><a href="/pc">首页</a>></li> 
+                <li class="sv_top_list"><a href="/pc/sever/serviceLibrary/sever_provider_list.html">服务商库</a>></li>
+                <li class="sv_top_list"><a>服务商详情</a>></li>
+                <!-- <li class="sv_top_list"><a class="" href="">咨询服务></a></li> -->
+                <li class="sv_top_list"><a>${cust.custNickname}</a></li>
+               <div class="clearfix"></div>
+            </ul>
+               <div class="clearfix"></div>
+            <span class="up_page borderCl" style="cursor:pointer;border:1px solid #ff6700;" onclick="javascript:history.back(-1)">返回上一页</span>
+        </div>
+		
+        <input type="hidden" id="cur_custId" value="${cust.id?c}">
+		<div class="content_box bg_color2">
+        	<div class="content_top">
+            	<div class="content_l float_l">
+            		<a href="#"><!-- Header Img -->
+						<#if cust.custImage?length gt 0>
+						<img style="width:120px;" src="${cust.custImage!'/statics/index/image/inx_photo.png'}" class="c_headImg">
+						<#else>
+						<img style="width:120px;" src="/statics/index/image/inx_photo.png" class="c_headImg">
+						</#if>
+					</a>
+				</div>
+                <div class="content_m float_l">
+                	<h3>${cust.custNickname}
+                		<#if cust.custType==1>
+                			<a><img src="/pc/sever/image/perG.png"></a>
+                		<#elseif cust.custType==2>
+                			<a><img src="/pc/sever/image/enterQ.png"></a>
+                		</#if> 
+                		
+	                	<#if cust.custAuthenticat?string('true','false') == 'true'>
+	                		<a><img src="/pc/sever/image/vflag.png"></a>
+						<#else>
+							<a><img src="/pc/sever/image/vflag_gray.png"></a>
+						</#if>
+                	</h3>
+                </div>
+                <div class="content_r float_r"><p>在商言商：<span>使命必达！</span></p></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="content_btn">
+            
+            	 <#list cust.custTechniques?split("，") as techniqueName>
+            	 	<#if techniqueName !=''>
+			        	<span class="btn" >${techniqueName}</span>
+			        </#if>
+			     </#list>
+            </div>
+        </div><!--content_box-->
+
+		<div class="tab_box bg_color2">
+        	<div class="tab_menu">
+            	<ul>
+                	<li class="index_li">服务内容</li>
+                	<!-- <li class="tab_menu_m">案例展示</li> -->
+                	<li>用户简介</li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <#assign service = readService('CUST_SERVICE_LIST',pubCatalog.refId)>
+            <div class="tab_conent">
+            	<div class="tab_list" style="display:block;">
+                    <div class="pic_con">
+                        <div class="btn_change left_btn">上一页</div>
+                        <div class="btn_change right_btn">下一页</div>
+                        <div class="pic_content">
+                            <div class="pic_lists">
+                                <ul>
+                                <#list service as s>
+                                    <li style="position:relative;">
+                                    	<a target="_blank" href="${s.serviceUrl!''}">
+                                    		<img src="${s.firstImg!''}" onload="setImgSize(this)"/>
+                                    	</a>
+                                    	<p>${s.serviceTitle!''}</p>
+                                    </li>
+                                </#list>  
+                                </ul>
+                            </div>
+                        </div><!--content end--> 
+                    </div>
+                </div><!--tablist1 end-->
+            	<!-- <div class="tab_list"></div>tablist2 end -->
+            	<div class="tab_list">
+                	<div class="tab_list_text">
+                		${(cust.custDesc?length gt 0)?string(cust.custDesc,'我很懒，什么都没留下！')}
+                		
+                    </div>
+                </div><!--tablist3 end-->
+            </div>
+        </div><!--tab_box end-->
+        <#assign repo = readPersonalReport(pubCatalog.refId)>
+       <div class="sv_synthesize bg_color2">
+       		<div class="sy_title bg_color">客户综合评价</div>
+            <div class="sy_content">
+            	<div class="sy_c_l float_l">
+                	<h4>关于承接的项目</h4>
+                    <div class="sy_fen">
+                    	<ul>
+                        	<li>已承接项目：<span>${cust.custRecVolume!'0'}</span></li>
+                        	<li>好评率：<span>
+	                        	<#if repo.googLevel == '0.0%'>
+									0%
+								<#elseif repo.googLevel?ends_with('%')>
+									${repo.googLevel}
+								<#else>
+									${repo.googLevel!'0'}%
+								</#if>
+                        	</span></li>
+                        	<li>诚信分：<span>${repo.integrityLevel!'100'}分</span></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="sy_star">
+                    	<ul>
+                        	<li>
+                            	<span style="width: 80px;">服务态度</span>
+                                &nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.serviceLevel!'0'}</span>
+                            </li>
+                        	<li>
+                            	<span style="width: 80px;">完成质量</span>
+                                &nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.qualityLevel!'0'}</span>
+                            </li>
+                        	<li>
+                            	<span style="width: 80px;">完成速度</span>
+                                &nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.speedLevel!'0'}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="star_xian"></div>
+                    <div class="sv_list_box">
+                    	<div class="sv_list_title">
+                        	<h4>服务项目列表</h4>
+                            <div class="page_btn float_r">
+                            	<a id="serup_no"><img src="/pc/sever/image/page_up11.png"></a>
+                            	<a id="serup"  style="display:none;" onclick="foreSerPage()"><img src="/pc/sever/image/page_up1.png"></a>
+                            	<a id="serdown_no" style="display:none;" ><img src="/pc/sever/image/page_down11.png"></a>
+                            	<a id="serdown" onclick="nextSerPage()"><img src="/pc/sever/image/page_down1.png"></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <ul class="page_item" id="ser_pro_list">
+                        	<#assign need2 = readPersonalNeed(pubCatalog.refId, 1)>
+                        	<#list need2 as n2>
+                        	
+                            <li>
+                                <a>${n2.proNeed.needTitle!'暂无'}</a>
+                                <span>${n2.proNeed.needPublicTime?substring(0,10)}</span>
+                            </li>
+                            </#list>
+                        </ul>
+                    </div>
+                </div>
+            	<div class="sy_c_r float_r">
+                	<h4>关于发布的项目</h4>
+                    <div class="sy_fen">
+                    	<ul>
+                        	<li>已发布项目：<span>${cust.custMakeVolume!'0'}</span></li>
+                        	<li>好评率：<span>
+	                        	<#if repo.googLevelRev == '0.0%'>
+									0%
+								<#elseif repo.googLevelRev?ends_with('%')>
+									${repo.googLevelRev}
+								<#else>
+									${repo.googLevelRev!'0'}%
+								</#if>
+                        	</span></li>
+                        	<li>诚信分：<span>${repo.integrityLevelRev!'100'}</span></li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="sy_star">
+                    	<ul>
+                        	<li>
+                            	<span style="width: 100px;">需求明确</span>
+                              	&nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.demandLevel!'0'}</span>
+                            </li>
+                        	<li>
+                            	<span style="width: 100px;">沟通顺畅</span>
+                                &nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.communicateLevel!'0'}</span>
+                            </li>
+                        	<li>
+                            	<span style="width: 100px;">项目质量</span>
+                                &nbsp;<span style="width: 180px;color: #ff6600;" class="score">${repo.qualityLevelRev!'0'}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="star_xian"></div>
+                    <div class="sv_list_box">
+                    	<div class="sv_list_title">
+                        	<h4>需求项目列表</h4>
+                            <div class="page_btn float_r">
+                            	<a id="needup_no"><img src="/pc/sever/image/page_up11.png"></a>
+                            	<a id="needup"  style="display:none;" onclick="foreNeedPage()"><img src="/pc/sever/image/page_up1.png"></a>
+                            	<a id="needdown_no" style="display:none;" ><img src="/pc/sever/image/page_down11.png"></a>
+                            	<a id="needdown" onclick="nextNeedPage()"><img src="/pc/sever/image/page_down1.png"></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <ul class="page_item" id="need_pro_list">
+                        	<#assign need = readPersonalNeed(pubCatalog.refId, 2)>
+							<#list need as n>
+                            <li>
+                                <a>${n.needTitle!''}</a>
+                                <span>${n.needPublicTime?substring(0,10)}</span>
+                            </li>
+                            </#list>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+       </div> 
+       
+       <div class="sv_btns"><a class="hire_btn" href="javascript:;">雇佣他</a>
+       <img alt="或" src="/pc/sever/image/or.png" style="float:left;">
+       <a style="cursor:pointer;" class="invite_btn" >邀请他竞标</a></div>
+       
+       <!-- 您还没有任何可以邀请他人竞标的项目 -->
+       	<div class="hire_box bounce_box">
+        	<h3>邀请他参与竞标</h3>
+            <div class="hire_content">
+            	<p>您还没有任何可以邀请他人竞标的项目！</p>
+                <a class="btn" onclick="hire()">现在去发布</a>
+            </div>
+            <div class="close_bounce"><img src="/pc/project/recruit/image/r_moveImg.png"></div>
+        </div>
+       <!-- 您还没有任何可以邀请他人竞标的项目 -->
+       <!--邀请他竞标-->
+       <div class="invite_box bounce_box">
+       		<h3>邀请他参与竞标</h3>
+        	<div class="invite_container">
+            	<table id="need_list_t" cellpadding="0" cellspacing="0" border="0">
+                	
+                </table>
+            </div>
+        	<div class="close_bounce"><img src="/pc/project/recruit/image/r_moveImg.png"></div>    
+       </div>
+       <!--邀请他竞标 end-->
+       
+    </div>
+</section>
+<div class="last"></div>
+
+<div class="shade_show"></div>
+<script>
+$(function(){
+	$(".tab_menu ul li").click(function(){
+		var liIndex = $(this).index();
+		$(".tab_menu ul li").removeClass("index_li").eq(liIndex).addClass("index_li");
+		$(".tab_conent .tab_list").hide().eq(liIndex).show();
+
+	});
+	
+	
+	$(".close_bounce").click(function(){
+		$(this).parents(".bounce_box").hide();	
+		$(".shade_show").fadeOut();
+	});
+	
+})
+</script>
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+<style>
+.pic_con{width:1100px;margin:18px auto 0px;position:relative}
+.pic_lists{float:left;width:8888px;height:300px;overflow:hidden;position:absolute;top:0px;left:0px}
+.btn_change{width:30px;height:300px;position:absolute;text-indent:-9999px;cursor:pointer}
+.left_btn{background:url(/pc/sever/image/leftstop.png) no-repeat;top:5px;left:10px}
+.right_btn{background:url(/pc/sever/image/rightstart.png) no-repeat;top:5px;right:10px; z-index:2;}
+
+.pic_content{overflow:hidden;height:320px;loat:left;width:1010px; padding:10px;position:relative; margin:18px 0 0 55px;}
+.pic_content ul li{float:left;width:300px;height:300px; text-align:center;margin:0 45px 0 0;position:relative}
+.pic_content ul li p{height:56px;line-height:56px;color:#fff;width:300px; font-size:20px; color:#333;position:absolute;bottom:0px;left:0px;text-align:center; background:rgba(255,255,255,.5);}
+.pic_content ul li a img{max-width:300px;max-height:300px}
+
+.shade_show {
+	BACKGROUND-COLOR: #000;
+	filter:Alpha(opacity=50); 
+	background: rgba(0, 0, 0, 0.5);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.pic_lists a {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+</style>
+<script type="text/javascript">
+$(function(){ 
+
+	var page=1;
+	var i=3;
+	var $p_Div=$(".pic_content");
+	var $picDiv=$(".pic_lists");
+	var picNum=$picDiv.children("ul").children("li").length;
+	var page_count=Math.ceil(picNum/3);
+	var $pDiv_w=$p_Div.width()+25;
+
+	$(".right_btn").click(function(){
+		if(page_count>page){
+			$picDiv.animate({left:'-'+page*$pDiv_w+"px"},"normal");
+			page++;
+			$(".left_btn").css({'background':'url(/pc/sever/image/leftstart.png) no-repeat'});
+			if(page>=page_count){
+				$(this).css({'background':'url(/pc/sever/image/rightstop.png) no-repeat'});
+			}else{
+				$(this).css({'background':'url(/pc/sever/image/rightstart.png) no-repeat'});
+			}
+		} 	
+	});
+	
+	$(".left_btn").click(function(){
+		if(page>1){
+			$picDiv.animate({left:"+="+$pDiv_w+'px'},"normal");
+			page--;
+			$(".right_btn").css({'background':'url(/pc/sever/image/rightstart.png) no-repeat'});
+			if(page<=1){
+				$(this).css({'background':'url(/pc/sever/image/leftstop.png) no-repeat'});	 
+			}else{
+				$(this).css({'background':'url(/pc/sever/image/leftstart.png) no-repeat'});
+			}
+		}	
+	});
+	
+	if(page_count<=1){
+		$(".left_btn").css({'background':'url(/pc/sever/image/leftstop.png) no-repeat'});	
+		$(".right_btn").css({'background':'url(/pc/sever/image/rightstop.png) no-repeat'});	
+	}
+})
+</script>
+
+
+
+
+</body>
+</html>

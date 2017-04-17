@@ -1,0 +1,319 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预览合同</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/pc/public/js/base64.js"></script>
+<script type="text/javascript" src="/pc/contract/contract_read.js"></script>
+<script type="text/javascript" src="/pc/public/js/characterConversion.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/style.css">
+
+<style type="text/css">
+.wapSubmit{
+	margin-left:91px;
+}
+
+.mainDiv {
+
+}
+
+.input_text {
+	background-color: #efefef;
+	border-color: #000000;
+	border-style: solid;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	min-width: 300px;
+	text-align:center;
+	min-height:17px;
+	word-wrap:break-word;/* 允许单词自动换行 */
+	
+}
+
+.input_textarea {
+	background-color: #efefef;
+	border-color: #000000;
+	border-style: solid;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	width: 1000px;
+	min-height: 24px;
+	word-wrap: break-word;/* 允许单词自动换行 */
+	text-indent: 30px;
+}
+</style>
+</head>
+
+<body style="background: #ccc;">
+
+	<div class="contract_box contract_edit contract_read">
+		<div class="edit_top">
+			<h3>预览合同</h3>
+			<div class="edit_btn float_r" id="edit_btn">点击编辑</div>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="edit_main">
+			<div class="edit_box">
+				<div id="contractDiv" class="mainDiv">
+					<form id="contractForm" action="">
+						<input id="contractid" type="hidden">
+						<h2 align="center">爱迪狗平台项目服务合同</h2>
+						<p align="center" style="margin: 15px 0;">
+							合同编号：<input id="contractNo"  class="input_text" readonly="readonly" />
+						</p>
+						<p>
+							甲方（需求方）：<input id="partyaName"  class="input_text" />
+						</p>
+						<p>
+							乙方（服务方）：<input id="partybName"  class="input_text" />
+						</p>
+						<p>丙方：深圳市云信天诚信息科技有限公司</p>
+						<p style="text-indent: 2em">依照《中华人民共和国合同法》、《中华人民共和国知识产权法》等法律法规、地方规章条例及行业规章之规定，以及《爱迪狗平台服务规则》，甲乙双方作为项目供需方建立合作伙伴关系，丙方作为平台服务方，负责资金及项目监管，三方共同明确各方责任，在项目合作过程中，本着相互合作、互惠互利的原则，共同协商达成如下协议，共同遵守：</p>
+						<h4>第一条、合同标的</h4>
+						<p>
+							1、项目名称： <input id="projectName"  class="input_text"
+								readonly="readonly" />
+						</p>
+						<p>2、内容及要求：</p>
+						<p>
+							（1）开发内容：根据甲乙双方合作的要求，乙方在规定时间内完成“ <input id="projectName1" 
+								class="input_text" readonly="readonly" />”产品/软件的功能开发，该产品/软件的设计要求如下：
+						</p>
+						<p id="productDesign" class="input_textarea"> </p>
+						<p>（2）该产品/软件的主要功能：
+							<p id="productMainFunc" class="input_textarea"> </p>
+						</p>
+						
+						<h4>第二条、合作方式</h4>
+						<p>
+							1、甲方将项目开发费用的 <input id="firstEntrustRate" 
+								class="input_text" />
+							<!-- 100 - competitiveNeedArrearsMaxRate -->
+							%委托到丙方企业账户后，丙方通知甲、乙双方，合同生效。
+						</p>
+						<p>2、乙方在合同生效之日起，三日内通过平台提供详细的需求说明和项目进度计划，甲方确认后，开始启动项目开发。</p>
+						<p>3、在项目进行过程中，乙方按照项目进度计划在平台提交项目进度实施过程，在完成项目开发时在平台及线下提交项目验收物给甲方验收。甲方在收到乙方验收物及验收申请后，7日内提供验收结果，验收不符项应在平台提交，并要求乙方修改，直至项目符合需求说明中的项目要求。</p>
+						<p>
+							4、在甲方确认项目验收物合格，项目开发完成，甲方在平台上点击确认验收指令，并将项目开发费用的另<input
+								id="competitiveNeedArrearsMaxRate"  class="input_text"
+								readonly="readonly" />%托管至丙方企业账户，项目进入交付阶段。
+						</p>
+						<p>
+							5、丙方在收到甲方全部项目合同款后，通知乙方在7日内交付开发成果。本项目的开发成果包括： 
+							<p id="developResult"  class="input_textarea" ></p>
+						</p>
+						<p>
+							6、甲方确认乙方的所有交付物后，丙方将项目开发费用的 <input id="partycPayRate" 
+								class="input_text" readonly="readonly" />%支付到乙方账户，项目开发结束，双方互评，双方未在七天内进行互评，系统默认好评。
+							<!-- 100 - competitiveNeedArrearsMaxRate -->
+						</p>
+						<p>
+							7、项目开发结束后，进入项目售后维护期，以项目交付时间之日起，免费维护时间周期为<input
+								id="competitiveServiceTimes"  class="input_text" />天，维护期结束，丙方在未收到甲方投诉的情况下，将余款支付到乙方账户。
+						</p>
+						<p>8、维护期结束后三天内，双方可以进行售后评价，双方未在七天内进行互评，系统默认好评。</p>
+
+						<h4>第三条、三方的权利义务</h4>
+						<p>1、甲方的权利义务</p>
+						<p>（1）甲方应当提供专人与乙方联络并对乙方的开发进度及质量进行监督。</p>
+						<p>（2）甲方应当提供产品开发所需要的所有设备、工具、备件交给乙方，并保证设备、工具、备件的正确性与完整性。</p>
+						<p>（3）甲方应当及时支付项目开发费用，保证项目开发费用及时到位。</p>
+						<p>（4）甲方应当依合同约定，及时检验、测试所开发的产品。</p>
+						<p>（5）甲方在产品符合约定时，依合同约定接受开发成果。</p>
+						<p>2、乙方的权利和义务</p>
+						<p>（1）乙方应当提供专人与甲方联络并及时向甲方说明开发进度及情况。</p>
+						<p>（2）乙方应当制定＜产品开发研究计划＞，经甲方确认后，按照＜产品开发研究计划＞的约定及时、正确的完成产品的开发。</p>
+						<p>（3）乙方有责任按甲方的要求在规定时间内完成项目开发，完成需要开发的内容。</p>
+						<p>（4）在项目开发完毕之后，在乙方对甲方提供的维护服务期之内，由于甲方设计变更而导致产品的非主要框架的变更，若变更范围在本合同所规定的功能范围之内，乙方有义务免费为甲方修改变更内容。</p>
+						<p>（5）乙方有义务自行准备产品开发所需的基础设备、工具、备件。</p>
+						<p>（6）乙方在其开发的范围内有为甲方提供培训及维护的义务。</p>
+						<p>（7）乙方对本产品的开发及在开发过程中所获得的所有数据负有保密的义务。</p>
+						<p>（8）乙方不得在开发产品中故意留下安全漏洞或设置阻止甲方对产品二次开发利用的障碍。</p>
+						<p>（9）乙方在开发出符合合同约定的产品后有权要求甲方依合同约定支付报酬。</p>
+						<p>3、丙方的权利和义务</p>
+						<p>（1）丙方为甲乙双方的交易提供平台服务，并提供专人对接甲乙双方，以便甲乙双方及时了解开发进度及情况。</p>
+						<p>（2）丙方负责监督乙方制定＜产品开发研究计划＞，在经甲方确认后，督促乙方按照＜产品开发研究计划＞的约定及时、正确的完成产品的开发。</p>
+						<p>（3）丙方接受甲乙双方委托，对产品项目开发费用执行代收、代管和代付；丙方在收到甲方书面的项目确认指令后，将项目开发费用按照合同第二条约定支付给乙方。</p>
+						<p>（4）对于甲乙双方之间关于交易的争议，丙方仅基于自身平台服务职责而有权接受甲乙双方的委托，对争议的事项予以第三方客观评判并给与处理，但丙方并不因该等评判或处理而承担任何责任；甲乙双方如有任何一方不认同丙方所做的协调、评判或处理结果，均有权采取法律手段向交易对方主张权利，但甲乙双方均不得因交易争议或争议的处理向丙方主张任何权利，丙方仅基于自身平台服务职责依法披露系统平台上产生的各项证据。</p>
+						<p>（5）丙方仅依据其与甲方或乙方签订的各项合同、文件或规则而为甲乙双方之间的交易行为提供第三方平台服务，因此，甲乙双方之间交易相关的具体执行事项、或损失、争议、赔偿等事项，甲乙双方均不得向丙方主张任何权利。</p>
+						<h4>第四条、交易产品的交付</h4>
+						<p>1、乙方应当在约定的开发周期内将产品交付甲方；</p>
+						<p>2、乙方交付产品时需要向甲方提交如下材料：</p>
+						<p id="deliveryMaterial" class="input_textarea"> </p>
+						<p>
+							3、产品的交付形式应当为 <input id="deliveryWay"  class="input_text" />。
+						</p>
+						<h4>第五条、验收条款</h4>
+						<p>1、开发阶段的验收：</p>
+						<p>甲方应当按照开发计划在每一个开发阶段对乙方所开发的产品进行检测和验收，在不符合开发计划时，甲方有权要求乙方修改。</p>
+						<p>2、产品交付的验收：</p>
+						<p>
+							（1）验收标准为：a.产品是否能正常运行；b.方案附件中提到的需求说明功能全部实现；c.项目按时完成；d.文档、代码或其他资料数据等均齐全；e.其他：
+							<span id="acceptStandard"  class="input_text" ></span> 。
+						</p>
+						<p>
+							（2）验收期限为 <input id="acceptDeadline"  class="input_text" />天时间，自产品完成研发且乙方向甲方提出验收要求之日起算。超过
+							<input id="acceptOvertime"  class="input_text" />
+							天，甲方仍不验收，且未书面提交测试结果，视为验收合格。
+						</p>
+						<h4>第六条、付款方式 及开发费用</h4>
+						<p>
+							1、项目开发费用：人民币
+							<input id="competitivePay"  class="input_text" />元（大写：人民币 
+							<input id="competitivePayUppercase"  class="input_text" readonly="readonly" /> ） 含6%技术服务费发票 。
+						</p>
+						<p>2、项目开发费用的支付方式按照合同第二条的约定内容执行。</p>
+						<h4>第七条、培训及维护</h4>
+						<p>1、乙方应对甲方进行开发项目的实施及维护的培训，以确保甲方能正确使用该项目成果。</p>
+						<p>2、乙方必须派专业人员对甲方进行包括但不限于保证项目正常动作的产品安装、调试、培训等；</p>
+						<p>3、根据“详细需求规格说明”约定，乙方应通过电话、EMAIL、现场服务等方式协助甲方的产品后续维护，乙方有义务及时响应并认真服务，努力确保甲方所委托开发项目的正常使用。</p>
+						<h4>第八条、保密条款</h4>
+						<p>乙方应承担保密义务的甲方商业秘密范围包括但不限于以下内容。</p>
+						<p>1、技术信息：技术方案、工程设计、技术报告、检测报告、实验数据、试验结果、图纸、样品等。</p>
+						<p>2、经营信息：包括经营方针、投资决策意向、产品服务定价、市场分析、广告策略等。</p>
+						<p>3、公司依照法律规定或者有关协议的约定对外承担保密义务的事项。</p>
+						<p>4、甲方提供的内容，为乙方应保密的内容，若乙方私自泄露，甲方拥有追究的权利。</p>
+						<p>5、乙方不得刺探非本职工作所需要的商业秘密。</p>
+						<p>6、未经甲方方书面同意，乙方不得利用甲方的商业秘密进行新产品的设计与开发和撰写论文向第三方公布。</p>
+						<p>7、解除本合同后，乙方不得向第三方公开甲方所拥有的未被公众知悉的商业秘密。</p>
+						<p>8、乙方必须严格遵守甲方的保密制度，防止泄露甲方的商业秘密。</p>
+						<p>
+							9、保密期限：乙方承担保密义务的期限为 <input id="partybSecrecyDeadline" 
+								class="input_text" />，不包含甲方宣布解密或者秘密信息实际上已经公开。
+						</p>
+						<p>10、丙方的保密义务：甲乙双方在平台公开发布的信息视为甲乙双方认为可公开部分，丙方不承担保密义务，丙方只承担甲乙双方在平台操作项目的详细实施内容的保密义务。丙方根据公检法等国家机关的指令披露系统平台上留存的甲乙双方交易记录等信息的，不视为违反前述保密义务。</p>
+						<h4>第九条、知识产权归属</h4>
+						<p>1、因本协议产生的开发成果（含设备、工具、备件、源代码、系统技术文件、软件、数据等）在甲方如约付款的前提下，由甲方享有知识产权。
+						</p>
+						<p>2、乙方保证其开发过程、开发完成的项目及相关产品不侵犯任何第三方的知识产权。</p>
+						<p>3、甲方有权利用乙方按照本合同约定提供的研究开发成果，进行后继改进。由此产生的具有实质性或创造性技术进步特征的新的技术成果及其权利归属，由甲方享有。
+						</p>
+						<h4>第十条、违约责任</h4>
+						<p>
+							1、任何一方有证据表明对方已经违约，可以通过平台通知对方修正，对方在7日内未予修正，受影响方有权中止履行本合同，并及时通过平台通知对方。若对方继续不履行、履行不当或者违反本合同，受影响方可以解除本合同并要求对方按照项目开发费用总金额的<input
+								id="penaltyRate"  class="input_text" />%作为赔偿违约金。
+						</p>
+						<p>
+							2、乙方如未按开发研究计划按时按阶段完成产品开发时，甲方有权按项目开发费用的<input
+								id="competitiveDepositRate"  class="input_text" />％向乙方收取服务违约金，超过<input
+								id="partybOvertime"  class="input_text" />天的甲方有权解除合同，违约金按<input
+								id="partybOvertimePenalty"  class="input_text" />元/天收取。
+						</p>
+						<p>
+							3、乙方同意在未持有甲方出具的有效授权委托书（加盖甲方公章并有甲方法定代表人签字或
+							签章）的情况下，也不得在完成本合同约定的研究开发工作后，利用该项目开发成果进行业务交易行为，利用该项目研究开发成果进行后续改进。如出现乙方单方违约情形，除应赔偿给甲方造成的所有损失外，还应向甲方支付涉及项目开发费用总金额的<input
+								id="competitiveDepositRate1"  class="input_text"
+								readonly="readonly" />%作为赔偿违约金。
+						</p>
+						<p>
+							4、乙方承诺不得在向甲方交付研究开发成果之前，自行将研究开发成果转让给第三人。如出现乙方单方违约情形，除应赔偿给甲方造成的所有损失外，还应向甲方支付涉及项目开发费用总金额的<input
+								id="competitiveDepositRate2"  class="input_text"
+								readonly="readonly" />%作为赔偿违约金。
+						</p>
+						<p>5、甲方未按合同约定进行验收，导致系统无法依约定完成的，甲方应当承担开发延期的不利后果，并不得以延期交付为由追究乙方责任。</p>
+						<p>
+							6、甲方未按合同约定支付项目开发费用总金额的，乙方有权按照项目开发费用总金额的<input
+								id="partyaPenaltyRate"  class="input_text" />%向甲方收取违约金，超过<input
+								id="partyaOvertime"  class="input_text" />天的乙方有权解除合同。
+						</p>
+						<h4>第十一条、合同终止及解除</h4>
+						<p>1、因不可抗力或意外事故导致本外包合同所指向的产品开发无法继续时，该合同终止。</p>
+						<p>2、在现有水平和条件以难以克服的技术困难，导致产品开发全部失败时，该合同自动终止。</p>
+						<p>3、在甲、乙任何一方有严重违约行为时，另一方有权单方解除合同。</p>
+						<p>4、经甲乙双方协商一致，可以解除。</p>
+						<h4>第十二条、诉讼条款</h4>
+						<p style="text-indent: 2em">因执行本合同或与本合同相关的一切争议，各方协商解决。协商不成的，任何一方有权向丙方住所地有管辖权的人民法院提起诉讼。</p>
+						<h4>第十三条、其它条款</h4>
+						<p>本协议经三方签署后成立，在甲方首笔项目开发费用到丙方账户之日起生效，非经三方代表人书面同意不得修改。</p>
+						<p>本协议之签订、生效、解释均依照中华人民共和国法律为准据法。</p>
+						<p>本协议一式三份,甲方执壹份,乙方执壹份,丙方执壹份。</p>
+						<p>（以下无正文）</p>
+						
+						<div style="width: 50%; float: left; margin: 10px 0;">
+							<p>
+								甲 方：<input id="partyaName1"  class="input_text"
+									readonly="readonly" />
+							</p>
+							<p>(公司请加盖公章,个人请签名并按手印)</p>
+							<p>
+								地址：<input id="partyaAddr"  class="input_text" />
+							</p>
+							<p>
+								授权代表：<input id="partyaDelegate"  class="input_text" />
+							</p>
+							<p>
+								联系电话：<input id="partyaContactTel"  class="input_text" />
+							</p>
+							<p>
+								签订时间：<input id=partyaSignTime  class="input_text"
+									readonly="readonly" />
+							</p>
+						</div>
+						<div style="width: 50%; float: left; margin: 10px 0;">
+							<p>
+								乙 方：<input id="partybName1"  class="input_text"
+									readonly="readonly" />
+							</p>
+							<p>(公司请加盖公章,个人请签名并按手印)</p>
+							<p>
+								地址：<input id="partybAddr"  class="input_text" />
+							</p>
+							<p>
+								授权代表：<input id="partybDelegate"  class="input_text" />
+							</p>
+							<p>
+								联系电话：<input id="partybContactTel"  class="input_text" />
+							</p>
+							<p>
+								签订时间：<input id="partybSignTime"  class="input_text"
+									readonly="readonly" />
+							</p>
+						</div>
+						<div>
+							<img src="/pc/contract/image/yxtc.png" style="margin-bottom:-200px;margin-left: 48px;position: relative;width: 172px;">
+							<p>丙 方： 深圳市云信天诚信息科技有限公司</p>
+							<p>(公司请加盖公章,个人请签名并按手印)</p>
+							<p>地址： 深圳市南山区科技园北区紫光信息港C栋801</p>
+							<p>授权代表： 刘勇</p>
+							<p>联系电话： 18670725250</p>
+							<p>
+								签订时间：<input id="thirdSignTime"  class="input_text"
+									readonly="readonly" />
+							</p>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- <div class="editPage float_r">
+        	<ul>
+            	<li class="index">1</li>
+            	<li>2</li>
+            	<li>3</li>
+            </ul>
+        </div> -->
+		<div class="clearfix"></div>
+
+		<div class="joinBtn">
+			<div class="edit_btns">
+				<div class="edit_no btn" id="cancelInvition">取消</div>
+				<div class="edit_yes btn" id="invitionContract" >邀请签署合同</div>
+				<div class="edit_yes btn" id="agreeContract" style="display:none;">同意</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>register</title>
+<script src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script src="/pc/public/js/public-utils.js"></script>
+<script src="/pc/user/register/register.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/public/css/css.css">
+<style>
+.loginBox{}
+.registerBox{padding: 12px 12px 12px 30px;}
+.registerBox .rs_div{ margin:0 0 15px 0;}
+.registerBox .rs_div label{ text-align:left; padding:0 5px 0 40px; width:120px; display:inline-block;}
+.registerBox .rs_div .loginIp{ width:254px;}
+.getMsg,.getMsg_sms{ background:#ff751a; color:#fff; padding:5px 3px; font-size:14px; float:none;}
+.checkboxDiv{ display:inline-block; width:120px;}
+.checkboxDiv span{ color:#9a9a9a;}
+.rs_sure{ padding-left:35px;}
+
+.use_idg{ color:#fff; font-size:12px; line-height:1.5; padding-left:50px;}
+.use_idg p{ margin:10px 0;}
+</style>
+</head>
+
+<body>
+
+<div>
+<form action="" method="">
+	<div class="loginTop">
+    	<div class="logoLink" style="cursor:pointer;" id="quick_recurit"><a>免登录快速发布</a></div>
+        <h3>欢迎注册！</h3>
+    </div>
+    <div style="color: rgb(255, 102, 0); width: 100%; text-align: center; height: 17px;" id="errortxt"></div>
+    <div class="loginMain registerBox">
+    	<div class="rs_div">
+    		<label>手机号</label>
+    		<input  onclick="_jM.dropMenu.show({showId:'areaCode',menuId:'areaCodeList',top:-35,left:-332});" name="areaCode" id="areaCode" readonly="readonly" class="loginIp loginPhone" type="text" value="86" style="width:40px;margin: 0px 0px 0px -4px;">
+    		<input class="loginIp loginPhone" type="text" value="" name="phone" id="phone" placeholder="" style="margin-left: -4px;width: 203px;">
+			<ul class="global_droplist" id="areaCodeList" style="width:150px;height:300px;overflow-y:scroll;display:none;">
+				<li onclick="areaCodeItemClick('86');">中国大陆+86</li>
+				<li onclick="areaCodeItemClick('886');">台湾+886</li>
+				<li onclick="areaCodeItemClick('852');">香港+852</li>
+				<li onclick="areaCodeItemClick('60');">马来西亚+60</li>
+				<li onclick="areaCodeItemClick('65');">新加坡+65</li>
+				<li onclick="areaCodeItemClick('81');">日本+81</li>
+				<li onclick="areaCodeItemClick('82');">韩国+82</li>
+				<li onclick="areaCodeItemClick('1');">美国+1</li>
+				<li onclick="areaCodeItemClick('1');">加拿大+1</li>
+				<li onclick="areaCodeItemClick('61');">澳大利亚+61</li>
+				<li onclick="areaCodeItemClick('64');">新西兰+64</li>
+				<li onclick="areaCodeItemClick('54');">阿根廷+54</li>
+				<li onclick="areaCodeItemClick('971');">阿联酋+971</li>
+				<li onclick="areaCodeItemClick('353');">爱尔兰+353</li>
+				<li onclick="areaCodeItemClick('20');">埃及+20</li>
+				<li onclick="areaCodeItemClick('372');">爱沙尼亚+372</li>
+				<li onclick="areaCodeItemClick('43');">奥地利+43</li>
+				<li onclick="areaCodeItemClick('853');">澳门+853</li>
+				<li onclick="areaCodeItemClick('1242');">巴哈马+1242</li>
+				<li onclick="areaCodeItemClick('507');">巴拿马+507</li>
+				<li onclick="areaCodeItemClick('55');">巴西+55</li>
+				<li onclick="areaCodeItemClick('375');">白俄罗斯+375</li>
+				<li onclick="areaCodeItemClick('359');">保加利亚+359</li>
+				<li onclick="areaCodeItemClick('32');">比利时+32</li>
+				<li onclick="areaCodeItemClick('48');">波兰+48</li>
+				<li onclick="areaCodeItemClick('501');">伯利兹+501</li>
+				<li onclick="areaCodeItemClick('45');">丹麦+45</li>
+				<li onclick="areaCodeItemClick('49');">德国+49</li>
+				<li onclick="areaCodeItemClick('7');">俄罗斯+7</li>
+				<li onclick="areaCodeItemClick('33');">法国+33</li>
+				<li onclick="areaCodeItemClick('63');">菲律宾+63</li>
+				<li onclick="areaCodeItemClick('358');">芬兰+358</li>
+				<li onclick="areaCodeItemClick('57');">哥伦比亚+57</li>
+				<li onclick="areaCodeItemClick('31');">荷兰+31</li>
+				<li onclick="areaCodeItemClick('996');">吉尔吉斯斯坦+996</li>
+				<li onclick="areaCodeItemClick('955');">柬埔寨+855</li>
+				<li onclick="areaCodeItemClick('974');">卡塔尔+974</li>
+				<li onclick="areaCodeItemClick('370');">立陶宛+370</li>
+				<li onclick="areaCodeItemClick('352');">卢森堡+352</li>
+				<li onclick="areaCodeItemClick('40');">罗马尼亚+40</li>
+				<li onclick="areaCodeItemClick('960');">马尔代夫+960</li>
+				<li onclick="areaCodeItemClick('976');">蒙古+976</li>
+				<li onclick="areaCodeItemClick('51');">秘鲁+51</li>
+				<li onclick="areaCodeItemClick('212');">摩洛哥+212</li>
+				<li onclick="areaCodeItemClick('52');">墨西哥+52</li>
+				<li onclick="areaCodeItemClick('27');">南非+27</li>
+				<li onclick="areaCodeItemClick('234');">尼日利亚+234</li>
+				<li onclick="areaCodeItemClick('47');">挪威+47</li>
+				<li onclick="areaCodeItemClick('351');">葡萄牙+351</li>
+				<li onclick="areaCodeItemClick('46');">瑞典+46</li>
+				<li onclick="areaCodeItemClick('41');">瑞士+41</li>
+				<li onclick="areaCodeItemClick('381');">塞尔维亚+381</li>
+				<li onclick="areaCodeItemClick('248');">塞舌尔+248</li>
+				<li onclick="areaCodeItemClick('966');">沙特阿拉伯+966</li>
+				<li onclick="areaCodeItemClick('94');">斯里兰卡+94</li>
+				<li onclick="areaCodeItemClick('66');">泰国+66</li>
+				<li onclick="areaCodeItemClick('90');">土耳其+90</li>
+				<li onclick="areaCodeItemClick('216');">突尼斯+216</li>
+				<li onclick="areaCodeItemClick('58');">委内瑞拉+58</li>
+				<li onclick="areaCodeItemClick('380');">乌克兰+380</li>
+				<li onclick="areaCodeItemClick('34');">西班牙+34</li>
+				<li onclick="areaCodeItemClick('30');">希腊+30</li>
+				<li onclick="areaCodeItemClick('36');">匈牙利+36</li>
+				<li onclick="areaCodeItemClick('39');">意大利+39</li>
+				<li onclick="areaCodeItemClick('972');">以色列+972</li>
+				<li onclick="areaCodeItemClick('91');">印度+91</li>
+				<li onclick="areaCodeItemClick('62');">印度尼西亚+62</li>
+				<li onclick="areaCodeItemClick('44');">英国+44</li>
+				<li onclick="areaCodeItemClick('962');">约旦+962</li>
+				<li onclick="areaCodeItemClick('84');">越南+84</li>
+				<li onclick="areaCodeItemClick('56');">智利+56</li>
+			</ul>
+    	</div>
+    	<div class="rs_div"><label>密码</label><input class="loginIp loginPsd" type="password" value="" name="password" id="password" placeholder=""></div>
+    	<div class="rs_div"><label>确认密码</label><input class="loginIp loginPsd" type="password" value="" name="passsword2" id="passsword2" placeholder=""></div>
+    	<div class="rs_div">
+	    	<label>短信验证码</label><input class="loginIp loginMsg" style="width:180px; margin:0;" type="text" value="" name="msg" id="validateCode" placeholder="">
+	    	<a class="getMsg">获取验证码</a>
+	    	<a class="getMsg_sms" style="display:none;">获取验证码</a>
+	    </div>
+    	<div class="rs_div"><label>推荐码</label><input class="loginIp loginTjm" type="text" value="" name="tjm" id="invitationCode" placeholder=""></div>
+    	<div class="rs_div"><label>用户类型</label>
+        	<div class="checkboxDiv checkboxDiv0"><img alt="√" id="indiSelect" sval="1" src="/pc/public/image/selected.png"><span>个人</span></div>
+        	<div class="checkboxDiv"><img alt="√" id="enterSelect" sval="2" src="/pc/public/image/unselect.png"><span>企业</span></div>
+        	<input type="hidden" id="custval" value="1">
+        </div>
+        <div class="rs_div"><label>企业类型</label>
+        	<div class="checkboxDiv checkboxDiv0"><img alt="√" id="serSelect" sval="0" src="/pc/public/image/selected.png"><span>服务方</span></div>
+        	<div class="checkboxDiv"><img alt="×" id="needSelect" sval="1" src="/pc/public/image/unselect.png"><span>需求方</span></div>
+        	<input type="hidden" id="serval" value="0">
+        </div>
+        <div class="rs_div rs_sure"><img alt="√" xyval="0" src="/pc/public/image/unselect.png" id="xyselect"><span class="userCk">同意接受<span><a href="/article/details/20.html" target="_blank" style="color:hsl(0, 0%, 60%)">《网站注册服务协议》</a></span></span></div>
+        <input type="hidden" id="xyval" value="0">
+    </div>
+    <div class="loginBg">
+    	<div class="loginBtn">
+        	<a class="nowBtn" id="submitButton" >立即注册</a>
+        </div>
+       	<div class="use_idg">
+        	<p>
+            	使用爱迪狗，<br>可以避免项目外包完成不保质，避免交付稿件缺失，避免结算出纠纷。
+            </p>
+        </div>
+    </div>
+  <!--  <div class="closeLogin"><img src="/pc/help/about/guide/image/closeImg.jpg"></div> --> 
+</form>
+</div>
+
+</body>
+</html>

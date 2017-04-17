@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>规则帮助</title>
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<style>
+.clearfix{ clear:both; height:0; width:100%; display:inline-block;}
+.fl_l{ float:left;}
+.fl_r{ float:right;}
+.rh_banner{ width:100%; height:387px; background:url(/pc/help/about/guide/image/adg_banner2.jpg) no-repeat center top; margin-top:42px;min-width:1200px;}
+.rh_container{ width:1100px; margin:50px auto 0; position:relative;}
+.rh_nav{ position:absolute; top:0; left:0;}
+.rh_right{ width:788px; border:3px solid #e9e9e9; padding:0 0px 0 16px; min-height:1185px; margin-left:293px;}
+.rh_list{ width:59px; height:59px; text-align:center; line-height:59px; color:#fff; font-size:30px; background:url(/pc/help/about/guide/image/h_quan.png) no-repeat center; float:left;}
+.rh_top{ margin-bottom:35px;}
+.rh_r_list{ height:54px; background:url(/pc/help/about/guide/image/h_select_bg1.png) no-repeat center left; width:223px; margin:3px 0 0 70px; line-height:54px; text-align:center; font-size:16px; color:#333; cursor:pointer;}
+.rh_nav li{ margin-bottom:30px; overflow:hidden;}
+.list_index{background:url(/pc/help/about/guide/image/h_select_bg2.png) no-repeat 4px center #fff; color:#fd7817; width:226px; }
+.rhTitle{ padding:14px 0 18px; font-size:24px; border-bottom:1px solid #fe7619; color:#333;}
+.rh_boxText{ padding-top:5px;}
+.rh_boxText h3{ color:#343434; font-size:18px; margin:10px 0;}
+.rh_boxText{ color:#666; font-size:14px;}
+.rh_boxText ul li{margin:10px 0;}
+.rh_l_xian{ width:2px; min-height:1200px; background:#ffe3d0; position:absolute; top:10px; left:30px; z-index:-1;}
+</style>
+</head>
+
+<body>
+<div class="first"></div>
+<section id="ruleHelp">
+	<div class="rh_banner"></div>
+    <div class="rh_container">
+    	<div class="rh_left rh_nav">
+        	<div class="rh_top"><img src="/pc/help/about/guide/image/rh_topBg.jpg"></div>
+            <div class="rh_l_xian"></div>
+        	<ul>
+            	<li onclick="show('rule_service')"><div class="rh_list">1</div><div class="rh_r_list list_index">爱迪狗平台服务协议</div></li>
+            	<li onclick="show('rule_need')"><div class="rh_list">2</div><div class="rh_r_list">发布需求规则</div></li>
+            	<li onclick="show('rule_later')"><div class="rh_list">3</div><div class="rh_r_list">后续服务规则</div></li>
+            	<li onclick="show('rule_project')"><div class="rh_list">4</div><div class="rh_r_list">承接项目规则</div></li>
+            	<li onclick="show('rule_secrecy')"><div class="rh_list">5</div><div class="rh_r_list">保密协议</div></li>
+            	<li onclick="show('rule_invoice')"><div class="rh_list">6</div><div class="rh_r_list">开具发票规则</div></li>
+            	<!-- <li onclick="show('rule_illegal')"><div class="rh_list">7</div><div style="line-height:1.2; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box; padding-top:6px;" class="rh_r_list">爱迪狗平台违规行为<br>及处理制度</div></li>
+            	<li onclick="show('rule_report')"><div class="rh_list">8</div><div class="rh_r_list">爱迪狗网举报处理制度</div></li> -->
+            </ul>
+        </div>
+        <div class="rh_right">
+			<iframe style="width:100%;overflow-x:hidden;overflow-y:scroll;border:none;height:1185px;" id="showFrame"></iframe>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+<div class="last"></div>
+<script>
+function show(id){
+	switch(id){
+	case "rule_service":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_service.html");
+		break;
+	case "rule_secrecy":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_secrecy.html");
+		break;
+	case "rule_need":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_need.html");
+		break;
+	case "rule_project":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_project.html");
+		break;
+	case "rule_later":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_later.html");
+		break;
+	case "rule_invoice":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_invoice.html");
+		break;	
+	case "rule_illegal":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_illegal.html");
+		break;
+	case "rule_report":
+		$("#showFrame").attr("src","/pc/help/about/guide/rules/rule_report.html");
+		break;
+	}
+}
+$(function(){
+	show('rule_service');
+	mydd = $('.rh_r_list');
+	mydd.each(function(i){
+		$(this).click(function(){
+			mydd.removeClass("list_index");
+			mydd.eq(i).addClass("list_index");
+		 })
+	});
+})
+</script>
+<div style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1256821722&web_id=1256821722" language="JavaScript"></script>
+</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>爱迪狗网，一站式产品研发服务众包平台，专注软件外包硬件外包</title>
+<meta name="keywords" content="众包平台，项目开发，软件外包，产品研发，方案商，代工，分包，APP开发商，项目外包，平台，模具开发，外观设计，结构设计，专家服务，爱迪狗，ideagoing" />
+<meta name="description" content="爱迪狗是中国创新的”一站式”产品研发服务众包平台，致力于整合全球优秀研发设计资源，让天下没有难开发的产品。更多众包项目、优质服务尽在爱迪狗。" />
+<link rel="shortcut icon" href="ico.png" type="image/x-icon" />
+<link type="text/css" rel="stylesheet" href="/pc/public/css/public.css">
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+</head>
+<body>
+<div class="first"></div>
+<div style="background: url('/pc/active/act3/image/img01.jpg') no-repeat center center; width: 100%; height: 1200px;min-width:1200px;margin-top:42px;">
+	<div class="container">
+		<div style="background: url('/pc/active/act3/image/fenxiang.png') no-repeat center center;float:left;width:362px;height:67px;cursor:pointer;margin-top:630px;margin-left:165px;display:none;padding:0px;" class="-mob-share-ui-button -mob-share-open"id="shareBtn"></div>
+		<div style="background: url('/pc/active/act3/image/fenxiang.png') no-repeat center center;float:left;width:362px;height:67px;cursor:pointer;margin-top:630px;margin-left:165px;" id="goLogin"></div>
+		<div style="background: url('/pc/active/act3/image/yaoqing.png') no-repeat center center;float:left;width:362px;height:67px;cursor:pointer;margin-top:630px;margin-left:135px;display:none;padding:0px;"  class="-mob-share-ui-button -mob-share-open"id="shareBtn2"></div>
+		<div style="background: url('/pc/active/act3/image/yaoqing.png') no-repeat center center;float:left;width:362px;height:67px;cursor:pointer;margin-top:630px;margin-left:135px;" id="goLogin2"></div>
+	</div>
+</div>
+<div style="background: url('/pc/active/act3/image/img02.jpg') no-repeat center center; width: 100%; height: 620px;min-width:1200px;">
+</div>
+<div style="background: url('/pc/active/act3/image/img03.jpg') no-repeat center center; width: 100%; height: 686px;min-width:1200px;">
+</div>
+<div style="background: url('/pc/active/act3/image/img04.jpg') no-repeat center center; width: 100%; height: 743px;min-width:1200px;">
+	<div class="container">
+		<div style="float:left;width:150px;margin-top:273px;margin-left:700px;font-size:23px;">
+			498170131
+		</div>
+	</div>
+</div>
+<!--MOB SHARE BEGIN-->
+<!-- <div class="-mob-share-ui-button -mob-share-open">分享</div> -->
+<div class="-mob-share-ui" style="display: block">
+	<ul class="-mob-share-list">
+		<li class="-mob-share-weibo"><p>新浪微博</p></li>
+		<li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+		<li class="-mob-share-qzone"><p>QQ空间</p></li>
+		<li class="-mob-share-qq"><p>QQ好友</p></li>
+		<li class="-mob-share-weixin"><p>微信</p></li>
+		<!-- <li class="-mob-share-douban"><p>豆瓣</p></li>
+		<li class="-mob-share-renren"><p>人人网</p></li>
+		<li class="-mob-share-kaixin"><p>开心网</p></li> -->
+		<li class="-mob-share-facebook"><p>Facebook</p></li>
+		<li class="-mob-share-twitter"><p>Twitter</p></li>
+		<!-- <li class="-mob-share-pocket"><p>Pocket</p></li>
+		<li class="-mob-share-google"><p>Google+</p></li>
+		<li class="-mob-share-youdao"><p>有道云笔记</p></li>
+		<li class="-mob-share-mingdao"><p>明道</p></li>
+		<li class="-mob-share-pengyou"><p>朋友网</p></li>
+		<li class="-mob-share-tumblr"><p>Tumblr</p></li>
+		<li class="-mob-share-instapaper"><p>Instapaper</p></li>
+		<li class="-mob-share-linkedin"><p>LinkedIn</p></li> -->
+	</ul>
+	<div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share"
+	src="http://f1.webshare.mob.com/code/mob-share.js?appkey=118140940ed48"></script>
+<!--MOB SHARE END-->
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var custId=_jM.getParam("rid");
+	if(_jM.validate.isNotEmpty(custId)){
+		var custId64=base64encode(custId);
+		//_jM.setCookie("RECOMMEND_CUST_ID", custId64, 7, "/");
+		
+		var exp = new Date();
+		exp.setTime(exp.getTime() + 7*24*60*60*1000);
+		document.cookie = "RECOMMEND_CUST_ID="+ custId64 + ";expires=" + exp.toGMTString()+";path=/";
+	}
+	
+	_jM.login.getLogin(function(data){
+		$("#goLogin").hide();
+		$("#shareBtn").show();
+		$("#goLogin2").hide();
+		$("#shareBtn2").show();
+		
+		var rid = _jM.getParam("rid");
+		if(_jM.validate.isEmpty(rid) || rid != data.custId){
+			$.post("/bp/custBase/getById",null,function(data){
+				window.location.href = '/pc/active/act3/act3.html?rid='+data.id;
+			})
+		}
+	},function(data){
+		$("#goLogin").show();
+		$("#shareBtn").hide();
+		$("#goLogin2").show();
+		$("#shareBtn2").hide();
+	});
+	
+	$("#goLogin").click(function(){
+		window.location.href="/login/login.html?backURL=/pc/active/act3/act3.html";
+	});
+	$("#goLogin2").click(function(){
+		window.location.href="/login/login.html?backURL=/pc/active/act3/act3.html";
+	});
+	$("#shareBtn").click(function(){
+		mobShare.config( {
+		    params: {
+		        url: window.location.href, // 分享链接
+		        title: '爱迪狗网，一站式产品研发服务众包平台，专注软件外包硬件外包', // 分享标题
+		        description: '爱迪狗是中国创新的”一站式”产品研发服务众包平台，致力于整合全球优秀研发设计资源，让天下没有难开发的产品。更多众包项目、优质服务尽在爱迪狗。'
+		    }, 
+			callback: function(plat, params){}
+		} );
+	});
+	$("#shareBtn2").click(function(){
+		_jM.post("/bp/u/getURL", null, function(rs, data){
+			mobShare.config( {
+			    params: {
+			        url: "http://"+data, // 分享链接
+			        title: '爱迪狗网，一站式产品研发服务众包平台，专注软件外包硬件外包', // 分享标题
+			        description: '爱迪狗是中国创新的”一站式”产品研发服务众包平台，致力于整合全球优秀研发设计资源，让天下没有难开发的产品。更多众包项目、优质服务尽在爱迪狗。'
+			    }, 
+				callback: function(plat, params ){}
+			});
+		}, null);
+	});
+});
+
+var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+function base64encode(str) {
+　　var out, i, len;
+　　var c1, c2, c3;
+　　len = str.length;
+　　i = 0;
+　　out = "";
+　　while(i < len) {
+ c1 = str.charCodeAt(i++) & 0xff;
+ if(i == len)
+ {
+　　 out += base64EncodeChars.charAt(c1 >> 2);
+　　 out += base64EncodeChars.charAt((c1 & 0x3) << 4);
+　　 out += "==";
+　　 break;
+ }
+ c2 = str.charCodeAt(i++);
+ if(i == len)
+ {
+　　 out += base64EncodeChars.charAt(c1 >> 2);
+　　 out += base64EncodeChars.charAt(((c1 & 0x3)<< 4) | ((c2 & 0xF0) >> 4));
+　　 out += base64EncodeChars.charAt((c2 & 0xF) << 2);
+　　 out += "=";
+　　 break;
+ }
+ c3 = str.charCodeAt(i++);
+ out += base64EncodeChars.charAt(c1 >> 2);
+ out += base64EncodeChars.charAt(((c1 & 0x3)<< 4) | ((c2 & 0xF0) >> 4));
+ out += base64EncodeChars.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >>6));
+ out += base64EncodeChars.charAt(c3 & 0x3F);
+　　}
+　　return out;
+}
+
+function utf16to8(str) {
+　　var out, i, len, c;
+　　out = "";
+　　len = str.length;
+　　for(i = 0; i < len; i++) {
+ c = str.charCodeAt(i);
+ if ((c >= 0x0001) && (c <= 0x007F)) {
+　　 out += str.charAt(i);
+ } else if (c > 0x07FF) {
+　　 out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+　　 out += String.fromCharCode(0x80 | ((c >>　6) & 0x3F));
+　　 out += String.fromCharCode(0x80 | ((c >>　0) & 0x3F));
+ } else {
+　　 out += String.fromCharCode(0xC0 | ((c >>　6) & 0x1F));
+　　 out += String.fromCharCode(0x80 | ((c >>　0) & 0x3F));
+ }
+　　}
+　　return out;
+}
+</script>
+<div class="last" style="margin-top:0px;"></div>
+<div style="display:none">
+<script src="http://s4.cnzz.com/z_stat.php?id=1256821722&web_id=1256821722" language="JavaScript"></script>
+</div>
+</body>
+</html>

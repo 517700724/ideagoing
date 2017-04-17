@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+.ratelist {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: -moz-use-text-color #ccc #ccc;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    display: none;
+    width: 280px;
+}
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.ratelist li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: default;
+}
+
+.subinput input{
+	background: #fff none repeat scroll 0 0;
+    border-radius: 6px;
+    color: #ff7519;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px 150px;
+    padding: 2px 0;
+    text-align: center;
+    width: 240px;
+    border:none;
+}
+
+/* ------------success case ----------- */
+.r_menu_top {
+	border-bottom: 1px solid #ff7519;
+	height: 30px;
+	padding: 0px 70px;
+}
+
+.r_menu_top ul li {
+	float: left;
+	width: 120px;
+	height: 29px;
+	line-height: 28px;
+	text-align: center;
+	border: 1px solid #ff7519;
+	border-bottom: 0;
+	margin-right: 20px;
+	background: #ff7519;
+	color: #fff;
+	margin-top: 1px;
+	font-size: 16px;
+	cursor: pointer;
+	-webkit-border-radius: 7px 7px 0 0;
+	-moz-border-radius: 7px 7px 0 0;
+	-ms-border-radius: 7px 7px 0 0;
+	-o-border-radius: 7px 7px 0 0;
+	border-radius: 7px 7px 0 0;
+}
+
+.r_menu_top ul .index {
+	background: #fff;
+	color: #ff7519;
+}
+
+.prd_iteam {
+	display: none;
+}
+
+.prd_iteam .upLoad_list {
+	padding: 0 70px;
+}
+
+.upLoad_list ul li {
+	margin-top: 15px;
+	padding: 5px 0 5px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.upLoad_list .upLoad_img {
+	height: 57px;
+	width: 57px;
+	background: #ccc;
+}
+
+.upLoad_list .upLoad_info {
+	padding: 10px 20px 0;
+	font-size: 16px;
+	color: #ccc;
+	width: 290px;
+}
+
+.upLoad_list .upLoad_radio {
+	width: 30px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.ct_topList h3 {
+	text-align: center;
+	padding-top: 15px;
+}
+
+.contract_upLoad .upLoad_pic {
+	padding: 22px 0;
+}
+
+.case_list_page {
+    margin-top: 20px;
+    overflow: auto;
+    width: 100%;
+}
+
+.case_list_page ul {
+    float: right;
+    list-style: outside none none;
+    margin-right: 20px;
+    padding: 0;
+}
+.case_list_page ul li {
+    color: #888;
+    float: left;
+    height: 32px;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.case_list_page ul li a:link {
+    color: #c0c0c0;
+    text-decoration: none;
+}
+
+.case_list_page ul li div {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 36px;
+}

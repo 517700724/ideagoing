@@ -1,0 +1,181 @@
+@charset "utf-8";
+/* CSS Document */
+body,p,h1,h2,h3,h4,h5,h6,ul,li{ margin:0; padding:0;}
+ul,li{ list-style:none;}
+.clearfix{ clear:both; width:100%; height:0; overflow:hidden;}
+.float_l{ float:left;}
+.float_r{ float:right;}
+
+
+/*  参与竞标  *//* margin:100px auto; */
+.contract_box{ width:565px;  padding-top:32px; background:#fff; min-height:300px; position:relative;}
+.ct_close{ position:absolute; top:7px; right:7px;} 
+.contract_box .ct_main{ padding:0 70px;}
+.ct_top h3, .ct_topList label{ color:#666; font-size:18px; font-weight:lighter;}
+.ct_topList{ margin-bottom:17px; }
+.ct_topList1{ margin-bottom:5px;}
+.ct_textarea textarea{ width:96%; background:#f5f5f5; border:1px solid #ccc; resize:none; height:220px; padding:10px 2%; color:#666;}
+.ct_topList label{ display:block; float:left; width:145px; text-align:left;}
+.ct_topList .ct_inputBox{ width:276px; border:1px solid #ccc; height:24px; color:#333; font-size:14px;background:#f5f5f5; float:left;}
+.ct_inputBox input{ height:20px;line-height:20px; font-size:12px; color:#666; padding:1px 5px; width:250px; background:#f5f5f5; border:none;}
+.contract_box .ct_md{ padding:20px 35px 30px;}
+.ct_md .ct_mdText{ font-size:14px; line-height:1.4; color:#333;}
+.ct_md .ct_mdText1{ font-size:14px; color:#999; line-height:1.4;}
+.ct_bottom .ct_btn{ display:block; font-size:14px; border:1px solid #ff7519; padding:3px 10px;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+-ms-border-radius:6px;
+-o-border-radius:6px;
+border-radius:6px;
+}
+.ct_bottom .ct_btn1{ }
+.ct_bottom .ct_btn2{ color:#ff7519; cursor:pointer;}
+.ct_bottom .ct_btn2 img{ margin-left:8px;
+-webkit-transition:all 0.4s ease;
+-moz-transition:all 0.4s ease;
+-ms-transition:all 0.4s ease;
+-o-transition:all 0.4s ease;
+transition:all 0.4s ease;
+}
+.imgDiv{ 
+-webkit-transform:rotate(180deg);
+-moz-transform:rotate(180deg);
+-ms-transform:rotate(180deg);
+-o-transform:rotate(180deg);
+transform:rotate(180deg);	
+-webkit-transform-origin:center center;
+-moz-transform-origin:center center;
+-o-transform-origin:center center;
+-ms-transform-origin:center center;
+transform-origin:center center;
+}
+.contract_box .ct_show{ border-top:1px solid #ccc; margin-top:12px; display:none;}
+.ct_show .ct_showText{ padding:15px 0; color:#ff7519; font-size:14px; text-align:center;}
+.ct_show .ct_topList2 label{ font-size:14px; color:#666; line-height:24px;}
+.ct_read{ font-size:14px; color:#666;margin-top:15px;margin-left:30px;}
+.ct_read a{ color:#ff7519;}
+.joinBtn{background:#ff7519 url("/pc/project/recruit/image/register_bg.jpg") no-repeat center top; padding: 23px 12px 33px; margin-top:10px;}
+.joinBtn .j_btn{ width:240px; margin:10px auto 0px; padding:2px 0; background:#fff; color:#ff7519; font-size:20px; text-align:center; cursor:pointer;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+-ms-border-radius:6px;
+-o-border-radius:6px;
+border-radius:6px;
+}
+
+/*  upload pic success  */
+.ct_topList label span{ color:#999; font-size:14px;}
+.contract_upLoad .ct_topList1{ margin-bottom:10px;}
+.contract_upLoad .ct_textarea textarea{ height:80px;}
+.contract_upLoad .upLoad_pic{ margin-top:35px; padding:22px 60px 5px; background:url("/pc/contract/image/contract_xian.png") no-repeat center top;}
+.contract_upLoad .up_pics_top .up_face{ width:118px; height:118px; background:#ccc; margin-bottom:4px; margin-right:4px;}
+.up_pics_top .pic_select ul li{ width:57px; height:57px; background:#ccc;}
+.pic_select1 ul li{ margin-bottom:4px;}
+.pic_select2 ul li{ float:left; margin-right:4px;}
+.upLoad_pic .up_pics{ padding-left:35px; width:190px; display:inline-block;}
+.up_picText{ padding-left:15px;}
+.up_picText h3{ color:#666; font-size:18px; font-weight:lighter; padding-top:85px;}
+.up_picText h3 span{ font-size:14px; color:#999; padding-left:3px;}
+.upLoad_pic .com_pic{ margin:17px 0 10px 35px; display:block; border:1px solid #fff; width:160px; text-align:center; color:#fff; font-size:12px;
+ height:30px; line-height:30px; cursor:pointer; display:inline-block;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+-ms-border-radius:6px;
+-o-border-radius:6px;
+border-radius:6px; 
+ }
+.upLoad_pic .up_text{ color:#333; font-size:12px;}
+
+
+/*  等待雇主选标  */
+.ct_mainTop img{ vertical-align:middle; padding-right:8px;}
+.ct_mainTop{ height:77px; line-height:77px; font-size:17px; color:#666;}
+.ct_mainTop a{ color:#ff7519; text-decoration:underline;}
+.center_main{ text-align:center;}
+.center_main .editBox{ width:175px; height:175px; background:url("/pc/contract/image/缩略图.jpg") repeat scroll 0 0; margin:14px auto 10px;}
+.center_main .ct_edit_title{ font-size:14px; color:#666;}
+.center_main .click_read{ font-size:14px; color:#ff7519; cursor:pointer; padding-bottom:5px; text-decoration: underline;}
+.joinBtn .contract_list{ width:500px; margin:12px auto 0; text-align:center; color:#fff; border-bottom:1px solid #fff; padding-bottom:12px;}
+.joinBtn .contract_list h3{ font-size:18px; font-weight:lighter; margin-bottom:5px;}
+.joinBtn .contract_list .contract_time{ font-size:16px;}
+.joinBtn .contract_list .contract_time span{ padding-right:20px;}
+.joinBtn .contract_last{ border:none;}
+.contract_center .joinBtn{ padding-bottom:15px;}
+
+
+/* contract edit */
+.contract_edit{ width:1100px; padding:0;}
+.contract_edit .edit_top{ padding:18px 10px 5px;} 
+.contract_edit .edit_top h3{ float:left; color:#666; font-size:18px; font-weight:lighter;}
+.contract_edit .edit_btn{ color:#ff7519; font-size:18px; border:1px solid #ff7519; padding:2px 10px;
+-webkit-border-radius:7px;
+-moz-border-radius:7px;
+-ms-border-radius:7px;
+-o-border-radius:7px;
+border-radius:7px;
+cursor:pointer;
+}
+.contract_edit .edit_main{ padding:0 10px;}
+.edit_main .edit_box {
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+   	height: 510px;
+    line-height: 30px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+.edit_box .contract_title{ color:#333; font-size:18px; text-align:center;}
+.edit_box .contractNum { color:#666; font-size:14px; text-align:center;}
+.edit_btns .btn{ width:110px; height:30px; line-height:30px; text-align:center; font-size:18px; float:left;
+-webkit-border-radius:6px;
+-moz-border-radius:6px;
+-ms-border-radius:6px;
+-o-border-radius:6px;
+border-radius:6px;
+}
+.joinBtn .edit_btns{ text-align:center; margin:0 auto; width:300px;}
+.edit_btns .edit_no{ border:1px solid #fff; margin-right:75px;}
+.edit_btns .edit_yes{ background:#fff; color:#ff7519; border:1px solid #fff;}
+.contract_edit .joinBtn{ padding-bottom:20px; margin:0;}
+.editPage{ padding:0 10px; margin-top:15px;}
+.editPage ul li{ float:left; margin-left:1px; padding:1px 10px; font-size:16px; color:#ff7519; cursor:pointer;
+-webkit-border-radius:4px 4px 0 0;
+-moz-border-radius:4px 4px 0 0;
+-ms-border-radius:4px 4px 0 0;
+-o-border-radius:4px 4px 0 0;
+border-radius:4px 4px 0 0;
+}
+.editPage ul .index{background:#ff7519; color:#fff;}
+.contract_read .joinBtn .edit_btns{ width:320px;}
+.contract_read .edit_btns .edit_yes{width:130px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

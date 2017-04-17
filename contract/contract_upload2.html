@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>上传成功案例</title>
+<script type="text/javascript" src="/pc/public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/pc/public/js/public-utils.js"></script>
+<script type="text/javascript" src="/statics/public/public-page.js"></script>
+<script type="text/javascript" src="/statics/public/FileUpload.js"></script>
+<script type="text/javascript" src="/pc/contract/contract_upload2.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/pc/public/css/public.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/style.css">
+<link rel="stylesheet" type="text/css" href="/pc/contract/css/contract.css">
+<style>
+.r_menu_top {
+	border-bottom: 1px solid #ff7519;
+	height: 30px;
+	padding: 0px 70px;
+}
+
+.r_menu_top ul li {
+	float: left;
+	width: 120px;
+	height: 29px;
+	line-height: 28px;
+	text-align: center;
+	border: 1px solid #ff7519;
+	border-bottom: 0;
+	margin-right: 20px;
+	background: #ff7519;
+	color: #fff;
+	margin-top: 1px;
+	font-size: 16px;
+	cursor: pointer;
+	-webkit-border-radius: 7px 7px 0 0;
+	-moz-border-radius: 7px 7px 0 0;
+	-ms-border-radius: 7px 7px 0 0;
+	-o-border-radius: 7px 7px 0 0;
+	border-radius: 7px 7px 0 0;
+}
+
+.r_menu_top ul .index {
+	background: #fff;
+	color: #ff7519;
+}
+
+.prd_iteam {
+	display: none;
+}
+
+.prd_iteam .upLoad_list {
+	padding: 0 70px;
+}
+
+.upLoad_list ul li {
+	margin-top: 15px;
+	padding: 5px 0 5px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.upLoad_list .upLoad_img {
+	height: 57px;
+	width: 57px;
+	background: #ccc;
+}
+
+.upLoad_list .upLoad_info {
+	padding: 10px 20px 0;
+	font-size: 16px;
+	color: #ccc;
+	width: 290px;
+}
+
+.upLoad_list .upLoad_radio {
+	width: 30px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.ct_topList h3 {
+	text-align: center;
+	padding-top: 15px;
+}
+
+.contract_upLoad .upLoad_pic {
+	padding: 22px 0;
+}
+
+.case_list_page {
+    margin-top: 20px;
+    overflow: auto;
+    width: 100%;
+}
+
+.case_list_page ul {
+    float: right;
+    list-style: outside none none;
+    margin-right: 20px;
+    padding: 0;
+}
+.case_list_page ul li {
+    color: #888;
+    float: left;
+    height: 32px;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.case_list_page ul li a:link {
+    color: #c0c0c0;
+    text-decoration: none;
+}
+
+.case_list_page ul li div {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 36px;
+}
+</style>
+</head>
+
+<body style="background: #ccc;">
+
+	<div class="contract_box contract_upLoad">
+		<div class="r_menu_top">
+			<ul>
+				<li class="index" id="upcase">上传成功案例</li>
+				<li id="selectcase">选择成功案例</li>
+			</ul>
+		</div>
+
+		<div class="prd_iteamBox">
+			<div id="upcase_div" class="prd_iteam" style="display: block;height:395px;">
+				<div class="ct_top ct_main">
+					<div class="ct_topList">
+						<h3>上传成功案例，提升中标率</h3>
+					</div>
+					<div class="ct_topList">
+						<label>案例名称<span>(必填)</span></label>
+						<div class="ct_inputBox">
+							<input type="text" value="" id="serviceTitle" placeholder="案例名称">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_topList ct_topList1">
+						<label>描述</label>
+						<div class="clearfix"></div>
+					</div>
+					<div class="ct_textarea">
+						<textarea id="serviceDesc" placeholder="简单描述"></textarea>
+					</div>
+				</div>
+
+				<div class="upLoad_pic" style="margin: 0 20px; background: none;">
+					<p class="up_text" id="showAttachment" style="padding: 10px 0;"></p>
+					<div class="com_pic" style="margin: 0;">+ 从电脑选择图片上传</div>
+					<p style="padding-top: 10px; margin-left: 20px; color: rgb(255, 103, 0);" class="up_text">一次只能选一个，可选多次，总附件不能大于50MB，最多只能上传3个附件。目前只支持.doc .xls .pdf .txt .jpg .png .ppt .zip .rar等格式的文件</p>
+				</div>
+			</div>
+
+			<div id="selectcase_div" class="prd_iteam" style="height:380px;">
+				<div class="upLoad_list">
+					<ul id="caseList">
+						<li>
+							<div class="upLoad_img float_l"></div>
+							<div class="upLoad_info float_l">成功案例图标</div>
+							<div class="upLoad_radio float_r">
+								<input type="radio" name="ulRadio">
+							</div>
+							<div class="clearfix"></div>
+						</li>
+						<li>
+							<div class="upLoad_img float_l"></div>
+							<div class="upLoad_info float_l">成功案例图标成功案例图标成功案例图标</div>
+							<div class="upLoad_radio float_r">
+								<input type="radio" name="ulRadio">
+							</div>
+							<div class="clearfix"></div>
+						</li>
+					</ul>
+				</div>
+				<div class="case_list_page" id="zonePager">
+			</div>
+			<!--prd_iteam end-->
+
+		</div>
+		<div class="joinBtn">
+			<span class="subinput"><input id="sub_select" style="display:none;" type="submit" value="提交"></span>
+			<div class="tj_btn" id="sub_update">
+				<form target="uploadFrame" method="post" enctype="multipart/form-data" name="uploadForm" id="uploadForm" action="/dfs/dfs/upload.dfs?imgProcess=1">
+					<span class="subinput"><input type="submit" value="提交"></span>
+					<div style="position: absolute; width: 160px; border-radius: 5px; height: 32px; line-height: 32px; color: rgb(255, 255, 255); background: rgb(255, 102, 0) none repeat scroll 0% 0%; text-align: center; cursor: pointer; top: 345px; z-index: 1; margin-left: 30px;" id="caseAddAttachment">图片文档上传</div>
+				</form>
+			</div>
+		</div>
+		<div class="ct_close">
+			<img src="/pc/help/about/guide/image/closeImg.jpg">
+		</div>
+	</div>
+	<input type="hidden" name="caseAttachment" id="caseAttachment"/>
+	<iframe name="uploadFrame" id="uploadFrame"  style="width:100%;height:50px;display:none;"></iframe>
+</body>
+</html>
